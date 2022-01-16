@@ -4,23 +4,28 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    "plugin:react/recommended",
-    "airbnb",
-    "react-app",
-    "plugin:prettier/recommended",
+    'plugin:react/recommended',
+    'airbnb',
+    'react-app',
+    'plugin:prettier/recommended',
   ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 13,
-    sourceType: "module",
+    sourceType: 'module',
   },
-  plugins: ["react"],
+  plugins: ['react'],
   rules: {
-    noConsole: "off",
-    noUndef: "error",
-    preferTemplate: "error",
-    noConsole: "warn",
+    strict: 0,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 };

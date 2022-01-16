@@ -1,10 +1,8 @@
-import React from "react";
-
 export default function Dashboard() {
   return (
     <div>
       <nav>
-        <div>simulacro</div>
+        <h1>simulacro</h1>
       </nav>
     </div>
   );
