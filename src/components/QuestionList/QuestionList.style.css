@@ -1,0 +1,10 @@
+#question__box {
+  width: 80%;
+  height: 90%;
+  padding: 20px;
+}
+#question {
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 2px;
+}
