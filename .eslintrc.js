@@ -23,8 +23,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'no-console': 'off',
     'prefer-template': 'error',
-    'react/jsx-filename-extension': 0,
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-filename-extension': [1, { extensions: ['.js'] }],
   },
   settings: {
     react: {
