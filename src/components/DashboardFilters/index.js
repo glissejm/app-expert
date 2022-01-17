@@ -1,1 +1,1 @@
-export { default } from "./DashboardFilters";
+export { default } from './DashboardFilters';
