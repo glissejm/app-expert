@@ -9,4 +9,4 @@
 # Previous push to github
 
 1. npm run format
-2. npm run start
+2. npm run start:eslint
