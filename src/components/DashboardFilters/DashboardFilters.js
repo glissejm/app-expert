@@ -3,14 +3,14 @@ import './DashboardFilters.style.css';
 
 export default function DashboardFilters() {
   return (
-    <div className=" container flex flex-col w-1/4" id="dashboard__filters">
-      <div className="flex flex-col h-1/2 items-center justify-around p-2">
+    <div className="flex flex-col w-1/4 items-center" id="dashboard__filters">
+      <div className="flex flex-col h-1/2 items-center justify-around p-4">
         <div className="text-3xl font-bold">Filtrar por cursos</div>
         <div className="text-xl form-check">
           <label htmlFor="defaultCheck1">
             {' '}
             <input
-              className="form-check-input h-4 w-4 border border-white checked:bg-[#072227] checked:border-[#072227]"
+              className="form-check-input h-4 w-4 border-black m-2"
               type="checkbox"
               value=""
               id="defaultCheck1"
@@ -56,7 +56,7 @@ export default function DashboardFilters() {
           </label>
         </div>
       </div>
-      <div className="flex flex-col h-1/2 items-center justify-around pb-8">
+      <div className="flex flex-col h-1/2 items-center pb-8 justify-around ">
         <div className="text-3xl font-bold">Filtrar por dificultad</div>
         <div className="text-xl">
           <label htmlFor="defaultCheck5">
