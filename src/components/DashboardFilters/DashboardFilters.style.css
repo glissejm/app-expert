@@ -1,3 +1,32 @@
 #dashboard__filters {
   height: 100%;
 }
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+#courses {
+  background: #02080f;
+  color: white;
+  height: 55%;
+  overflow: auto;
+  border: none;
+  border-color: #02080f;
+  margin-bottom: 10px;
+  padding-bottom: 0px;
+}
+
+option {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+option::selection {
+  background: orange;
+}

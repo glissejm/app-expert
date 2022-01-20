@@ -6,12 +6,16 @@ import './Dashboard.style.css';
 
 export default function Dashboard() {
   return (
-    <div id="dashboard">
+    <main id="dashboard">
       <Navbar />
-      <div className="flex" id="box__dashboard">
+      <div className="py-6 flex justify-center">
+        <h2 className="text-4xl font-bold">Comienza a practicar</h2>
+      </div>
+
+      <article className="flex" id="box__dashboard">
         <DashboardFilters />
         <QuestionList />
-      </div>
-    </div>
+      </article>
+    </main>
   );
 }

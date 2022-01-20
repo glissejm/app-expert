@@ -3,98 +3,31 @@ import './DashboardFilters.style.css';
 
 export default function DashboardFilters() {
   return (
-    <div className="flex flex-col w-1/4 items-center" id="dashboard__filters">
-      <div className="flex flex-col h-1/2 items-center justify-around p-4">
-        <div className="text-3xl font-bold">Filtrar por cursos</div>
-        <div className="text-xl form-check">
-          <label htmlFor="defaultCheck1">
-            {' '}
-            <input
-              className="form-check-input h-4 w-4 border-black m-2"
-              type="checkbox"
-              value=""
-              id="defaultCheck1"
-            />{' '}
-            Trigonometría
-          </label>
-        </div>
-        <div className="text-xl">
-          <label htmlFor="defaultCheck2">
-            {' '}
-            <input
-              className="form-check-input h-4 w-4 border border-black m-2"
-              type="checkbox"
-              value=""
-              id="defaultCheck2"
-            />
-            Álgebra
-          </label>
-        </div>
-
-        <div className="text-xl">
-          <label htmlFor="defaultCheck3">
-            {' '}
-            <input
-              className="form-check-input h-4 w-4 border border-black m-2"
-              type="checkbox"
-              value=""
-              id="defaultCheck3"
-            />
-            Geometría
-          </label>
-        </div>
-        <div className="text-xl">
-          <label htmlFor="defaultCheck4">
-            {' '}
-            <input
-              className="form-check-input h-4 w-4 border border-black m-2"
-              type="checkbox"
-              value=""
-              id="defaultCheck4"
-            />
-            Razonamiento matemático
-          </label>
-        </div>
-      </div>
-      <div className="flex flex-col h-1/2 items-center pb-8 justify-around ">
-        <div className="text-3xl font-bold">Filtrar por dificultad</div>
-        <div className="text-xl">
-          <label htmlFor="defaultCheck5">
-            {' '}
-            <input
-              className="form-check-input h-4 w-4 border border-black m-2"
-              type="checkbox"
-              value=""
-              id="defaultCheck5"
-            />
-            Fácil
-          </label>
-        </div>
-        <div className="text-xl">
-          <label htmlFor="defaultCheck6">
-            {' '}
-            <input
-              className="form-check-input h-4 w-4 border border-black m-2"
-              type="checkbox"
-              value=""
-              id="defaultCheck6"
-            />
-            Medio
-          </label>
-        </div>
-        <div className="text-xl">
-          <label htmlFor="defaultCheck7">
-            {' '}
-            <input
-              className="form-check-input h-4 w-4 border border-black m-2"
-              type="checkbox"
-              value=""
-              id="defaultCheck7"
-            />
-            Difícil
-          </label>
-        </div>
-      </div>
-    </div>
+    <section
+      className="flex flex-col w-1/4 items-center justify-start"
+      id="dashboard__filters"
+    >
+      <form className="flex flex-col h-2/5 items-center justify-around px-8 mb-4 bg-[#02080F] rounded-xl">
+        <h2 className="text-3xl font-bold text-[#AEFEFF]">
+          Filtrar por cursos
+        </h2>
+        <select name="courses" id="courses" form="coursesform" multiple>
+          <option value="algebra">Álgebra</option>
+          <option value="geometria">Geometría</option>
+          <option value="trigonometria">Trigonometría</option>
+          <option value="raz-mate">Razonamiento matemático</option>
+        </select>
+      </form>
+      <form className="flex flex-col h-2/5 items-center justify-around px-8 bg-[#02080F] rounded-xl">
+        <h2 className="text-3xl font-bold text-[#AEFEFF]">
+          Filtrar por cursos
+        </h2>
+        <select name="dificult" id="courses" form="dificultform" multiple>
+          <option value="facil">Fácil</option>
+          <option value="medio">Medio</option>
+          <option value="dificil">Difícil</option>
+        </select>
+      </form>
+    </section>
   );
 }
