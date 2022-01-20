@@ -1,11 +1,12 @@
 import React from 'react';
 import Navbar from './components/Navbar';
+import Presentation from './components/Presentation';
 
 function App() {
   return (
     <>
-      <h1>Titulo</h1>
       <Navbar />
+      <Presentation />
     </>
   );
 }
