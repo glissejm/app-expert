@@ -1,4 +1,8 @@
 # Deploy local
 
-1. npm run format
-2. npm run start or npm start
+1. yarn start
+
+# Configuration ESLINT y PRETTIER
+
+https://github.com/facebook/create-react-app/tree/main/packages/eslint-config-react-app
+
