@@ -1,12 +1,6 @@
 import React from 'react';
 import Dashboard from './pages/Dashboard';
 
-function App() {
-  return (
-    <div>
-      <Dashboard />
-    </div>
-  );
-}
+function App() {}
 
 export default App;
