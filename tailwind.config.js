@@ -1,7 +1,5 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  purge: ['src/**/*.js', 'src/**/*.jsx', 'public/**/*.html'],
-  darkMode: false,
   theme: {
     extend: {
       colors: {
@@ -11,8 +9,8 @@ module.exports = {
         third: '#FFB800',
         fourth: '#DE3C4B',
         primaryC: '#AEFEFF',
-        blueDark : '#072227',
-        white : '#FFFFFF',
+        blueDark: '#072227',
+        white: '#FFFFFF',
         dark: '#000000',
         grayC: '#EDF2EF',
         blueC: '#0D6EFD',
