@@ -1,7 +1,6 @@
 import React from 'react';
 import FormLogin from '../../components/FormLogin/FormLogin';
-import LogoPapel from '../../assets/hoja_papel.png';
-import Logo1 from '../../assets/Logo1.png';
+import Logo1 from '../../assets/logo.jpg';
 
 function Login() {
   return (
@@ -19,7 +18,7 @@ function Login() {
         </div>
 
         <div
-          class=" bg-bluePrimary w-full flex flex-col md:max-w-md lg:max-w-full md:mx-auto md:mx-0 md:w-1/2 xl:w-7/12 h-screen px-6 lg:px-16 xl:px-12
+          class=" bg-bluePrimary w-full flex-col md:max-w-md lg:max-w-full md:mx-auto  md:w-1/2 xl:w-7/12 h-screen px-6 lg:px-16 xl:px-12
         flex items-center justify-center  pb-48"
         >
           <div class=" absolute top-0 ">
