@@ -1,7 +1,9 @@
-import "./App.css";
-
+import './App.css';
+import Home from './pages/Landing/Home';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Login from './pages/Login/Login';
 function App() {
-  return <h1 className="text-1xl font-bold underline">Hello world!</h1>;
+  return <Dashboard />;
 }
 
 export default App;

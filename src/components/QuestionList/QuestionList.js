@@ -1,5 +1,6 @@
 import React from 'react';
 import './QuestionList.style.css';
+import QuestionBox from '../QuestionBox';
 
 const Questions = [
   {
@@ -125,16 +126,12 @@ const Questions = [
 ];
 
 const listQuestion = Questions.map((question) => (
-  <button
-    className="rounded-full flex items-center place-content-around  bg-[#072227]"
-    id="question"
-    type="button"
-    key={question.id}
-  >
-    <h3 className="font-bold text-[#AEFEFF]">{question.name}</h3>
-    <p className="text-white">{question.topic}</p>
-    <p className="text-white">{question.difficult}</p>
-  </button>
+  <QuestionBox
+    id={question.id}
+    name={question.name}
+    topic={question.topic}
+    difficult={question.difficult}
+  />
 ));
 
 export default function QuestionList() {
