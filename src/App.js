@@ -1,7 +1,7 @@
-import React from 'react';
-import Dashboard from './pages/Dashboard';
-import Home from './pages/Landing/Home';
+import './App.css';
 
-function App() {}
+function App() {
+  return <h1 className="text-1xl font-bold underline">Hello world!</h1>;
+}
 
 export default App;
