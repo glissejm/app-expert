@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function WindowData({title,content,windowStyle,contentStyle}) {
+export default function CoursesDetail({title,content,windowStyle,contentStyle}) {
   return(
       <article className={`border-2 border-darkPrimary rounded-lg ${windowStyle}`}>
           <div className='bg-darkPrimary px-3 py-2 text-lightSecondary font-bold'>
