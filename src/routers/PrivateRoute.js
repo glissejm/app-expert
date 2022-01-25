@@ -9,7 +9,7 @@ function PrivateRoute({ children }) {
 
   localStorage.setItem('lastPath', pathname + search);
 
-  return user.logged ? children : <Navigate to='/home' />;
+  return user.logged ? children : <Navigate to="/" />;
 }
 
 PrivateRoute.propTypes = {
