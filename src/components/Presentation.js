@@ -14,7 +14,7 @@ export default function Presentation() {
           </h1>
           <p className="text-base text-center md:text-lg xl:text-2xl">
             Las mejores formas de resolver exámenes de admisión, disponible para
-            ti a todo hora.
+            ti a toda hora.
           </p>
           <p className="text-base text-center md:text-lg xl:text-2xl">
             La forma más rápida y segura de ingresar a la universidad.
