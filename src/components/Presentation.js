@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from './Button';
+import ideas from '../assets/ideas.jpg';
 import student from '../assets/student.jpg';
 import think from '../assets/think.jpg';
-import ideas from '../assets/ideas.jpg';
+import Button from './Button';
 
 export default function Presentation() {
   return (
@@ -21,7 +21,7 @@ export default function Presentation() {
           </p>
           <Button
             name="Compra un plan"
-            buttonStyle="w-fit border border-black mt-4"
+            buttonStyle="px-6 py-2 bg-lightSecondary rounded-full text-primary font-bold h-fit hover:bg-darkSecondary border-white border-2 w-fit border border-black mt-4"
           />
         </div>
         <figure className="flex justify-center col-span-12 md:col-span-5">

@@ -6,7 +6,7 @@ import AuthContext from '../auth/authContext';
 function PublicRoute({ children }) {
   const { user } = useContext(AuthContext);
 
-  return !user.logged ? children : <Navigate to='/home' />;
+  return !user.logged ? children : <Navigate to="/" />;
 }
 
 PublicRoute.propTypes = {
