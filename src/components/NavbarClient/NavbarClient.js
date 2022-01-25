@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from '../../assets/logo-expert.png';
 import AuthContext from '../../auth/authContext';
 import types from '../../types/types';
@@ -21,7 +21,12 @@ export default function NavbarClient() {
 
   return (
     <nav className="flex bg-[#072227] justify-around items-center" id="navbar">
-      <img src={Logo} alt="logo-expert" style={{ width: '160px' }} />
+      <NavLink
+        className="text-lightSecondary font-black text-xl"
+        to="/dashboard"
+      >
+        <img src={Logo} alt="logo-expert" style={{ width: '160px' }} />
+      </NavLink>
       <p className="font-bold text-white text-lg">125 ejercicios resueltos</p>
       <p className="font-bold text-lg text-white">Hola {user.name}!</p>
       <input
@@ -30,10 +35,16 @@ export default function NavbarClient() {
         placeholder="Buscar pregunta"
         style={{ backgroundColor: '#AEFEFF' }}
       />
-      <Button
-        name={'Simulacro'}
-        buttonStyle="px-6 py-2 bg-lightSecondary rounded-full text-primary font-bold h-fit hover:bg-darkSecondary border-white border-2"
-      />
+      <NavLink
+        className="text-lightSecondary font-black text-xl"
+        to="/simulacro"
+      >
+        <Button
+          name={'Simulacro'}
+          buttonStyle="px-6 py-2 bg-lightSecondary rounded-full text-primary font-bold h-fit hover:bg-darkSecondary border-white border-2"
+        />
+      </NavLink>
+
       <Button
         name={'Perfil'}
         buttonStyle="px-6 py-2 bg-lightSecondary rounded-full text-primary font-bold h-fit hover:bg-darkSecondary border-white border-2"
