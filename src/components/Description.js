@@ -20,7 +20,10 @@ export default function Description() {
           más rápidas formas de resolver problemas es algo que lleva práctica,
           por eso te traemos las mejores soluciones siempre disponibles para ti.
         </p>
-        <Button name="Registrarse" buttonStyle="w-fit border border-black" />
+        <Button
+          name="Registrarse"
+          buttonStyle="px-6 py-2 bg-lightSecondary rounded-full text-primary font-bold h-fit hover:bg-darkSecondary border-white border-2 w-fit border border-black"
+        />
       </article>
     </>
   );

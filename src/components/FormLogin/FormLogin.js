@@ -2,14 +2,15 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../auth/authContext';
 import types from '../../types/types';
-import ButtonLogin from './../ButtonLogin';
-import InputLogin from './../InputLogin';
+import Input from '../Input';
+import Button from './../Button';
 
 export default function FormLogin() {
   const navigate = useNavigate();
   const { dispatch } = useContext(AuthContext);
 
   const handleLogin = () => {
+    alert('Hice click');
     const action = {
       type: types.login,
       payload: { name: 'Glisse' },
@@ -27,24 +28,29 @@ export default function FormLogin() {
   return (
     <form className="mt-6" action="#" methos="POST">
       <div>
-        <InputLogin type="email" name="Ingresar Usuario" />
+        <Input type="email" name="Ingresar Usuario" />
       </div>
       <div className="mt-4">
-        <InputLogin type="password" name="Ingresar Contraseña" />
+        <Input type="password" name="Ingresar Contraseña" />
       </div>
 
-      <div className="mb-8 form-check">
+      <div className="mt-4 mb-8 form-check">
         <input
           type="checkbox"
           name="connected"
           className="form-check-input mt-3"
         />
-        <label for="connected" className="form-check-label mx-2">
+        <label htmlFor="connected" className="form-check-label mx-2 mb-4">
           Mantenerme conectado
         </label>
       </div>
 
-      <ButtonLogin name="Iniciar Sesión" handleLogin={handleLogin} />
+      <Button
+        name="Iniciar Sesión"
+        buttonStyle="w-full block bg-blueThird hover:bg-darkSecondary focus:bg-blueThird font-semibold rounded-lg
+    px-4 py-2 mt-4 border border-dark"
+        onClick={handleLogin}
+      />
 
       <hr className="my-6 border-gray-300 w-full" />
 
@@ -56,7 +62,11 @@ export default function FormLogin() {
           <span className="ml-4">Iniciar sesion con Google</span>
         </div>
       </button>
-      <ButtonLogin name="Registrarse" />
+      <Button
+        name="Registrarse"
+        buttonStyle="w-full block bg-blueThird hover:bg-darkSecondary focus:bg-blueThird font-semibold rounded-lg
+    px-4 py-2 mt-4 border border-dark"
+      />
     </form>
   );
 }

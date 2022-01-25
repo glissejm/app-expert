@@ -1,7 +1,7 @@
 import React from 'react';
-import './Navbar.style.css';
 import Logo from '../../assets/logo-expert.png';
 import Button from '../Button';
+import './Navbar.style.css';
 
 export default function NavbarClient() {
   return (
@@ -15,8 +15,14 @@ export default function NavbarClient() {
         placeholder="Buscar pregunta"
         style={{ backgroundColor: '#AEFEFF' }}
       />
-      <Button name={'Simulacro'} />
-      <Button name={'Perfil'} />
+      <Button
+        name={'Simulacro'}
+        buttonStyle="px-6 py-2 bg-lightSecondary rounded-full text-primary font-bold h-fit hover:bg-darkSecondary border-white border-2"
+      />
+      <Button
+        name={'Perfil'}
+        buttonStyle="px-6 py-2 bg-lightSecondary rounded-full text-primary font-bold h-fit hover:bg-darkSecondary border-white border-2"
+      />
     </nav>
   );
 }
