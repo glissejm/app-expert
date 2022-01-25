@@ -10,7 +10,6 @@ export default function FormLogin() {
   const { dispatch } = useContext(AuthContext);
 
   const handleLogin = () => {
-    alert('Hice click');
     const action = {
       type: types.login,
       payload: { name: 'Glisse' },
