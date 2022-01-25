@@ -44,7 +44,7 @@ export default function FormLogin() {
         </label>
       </div>
 
-      <ButtonLogin name="Iniciar Sesión" handleLogin={handleLogin} />
+    <ButtonLogin name="Iniciar Sesión" handleLogin={handleLogin} />
 
       <hr className="my-6 border-gray-300 w-full" />
 
