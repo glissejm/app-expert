@@ -1,13 +1,12 @@
-import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
-import AuthContext from '../auth/authContext';
+import PropTypes from "prop-types";
+import React from "react";
+import { Navigate } from "react-router-dom";
 
 function PrivateRoute({ children }) {
-  const { user } = useContext(AuthContext);
-  const { pathname, search } = useLocation();
-
-  localStorage.setItem('lastPath', pathname + search);
+  //logged handle the public and privated routes
+  //that means:
+  //if logged===true -> privateRoute are accesible
+  const user = { logged: false };
 
   return user.logged ? children : <Navigate to="/" />;
 }

@@ -1,6 +1,6 @@
-import React from 'react';
-import Logo1 from '../../assets/Logo1.png';
-import FormRegister from '../../components/FormRegister/FormRegister';
+import React from "react";
+import Logo1 from "../../assets/Logo1.png";
+import FormRegister from "../../components/FormRegister/FormRegister";
 
 function Register() {
   return (
@@ -18,14 +18,14 @@ function Register() {
         </div>
 
         <div
-          className=" bg-bluePrimary w-full flex flex-col md:max-w-md lg:max-w-full md:mx-auto md:mx-0 md:w-1/2 xl:w-7/12 h-screen px-6 lg:px-16 xl:px-12
-        flex items-center justify-center  pb-48"
+          className=" bg-bluePrimary w-full flex flex-col md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-7/12 h-screen px-6 lg:px-16 xl:px-12
+         items-center justify-center  pb-48"
         >
           <div className="w-5/6 mt-5 pt-40">
             <div className=" bg-white w-full h-90 py-8 px-8   ">
               <div className="pb-10 px-10 border-4 border-dark">
                 <h1 className="text-xl pt-5 md:text-2xl font-bold leading-tight mt-12 flex justify-center">
-                  {' '}
+                  {" "}
                   Bienvenido
                 </h1>
                 <FormRegister />

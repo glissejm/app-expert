@@ -1,27 +1,13 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AuthContext from '../../auth/authContext';
-import types from '../../types/types';
 import Input from '../Input';
-import Button from './../Button';
+import Button from '../Button';
 
 export default function FormLogin() {
   const navigate = useNavigate();
-  const { dispatch } = useContext(AuthContext);
 
   const handleLogin = () => {
-    const action = {
-      type: types.login,
-      payload: { name: 'Glisse' },
-    };
-
-    dispatch(action);
-
-    const lastPath = localStorage.getItem('lastPath') || '/dashboard';
-
-    navigate(lastPath, {
-      replace: true,
-    });
+   
   };
 
   return (

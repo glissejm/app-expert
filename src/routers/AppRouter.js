@@ -1,14 +1,14 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Error404 from '../pages/Error/Error404';
-import Comprar from '../pages/Landing/Comprar';
-import Home from '../pages/Landing/Home';
-import Nosotros from '../pages/Landing/Nosotros';
-import Login from '../pages/Login/Login';
-import Register from '../pages/Register/Register';
-import DashboardRoutes from './DashboardRoutes';
-import PrivateRoute from './PrivateRoute';
-import PublicRoute from './PublicRoute';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Error404 from "../pages/Error/Error404";
+import Comprar from "../pages/Landing/Comprar";
+import Home from "../pages/Landing/Home";
+import Nosotros from "../pages/Landing/Nosotros";
+import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
+import DashboardRoutes from "./DashboardRoutes";
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 
 export default function AppRouter() {
   return (
@@ -40,6 +40,7 @@ export default function AppRouter() {
         />
         <Route path="/comprar" element={<Comprar />} />
         <Route path="/nosotros" element={<Nosotros />} />
+        {/* In this route define the component for users registered */}
         <Route
           path="/*"
           element={
