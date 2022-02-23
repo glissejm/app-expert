@@ -1,15 +1,19 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {logoutUser} from "../../store/actions/logout.action.js"
+
 import Logo from "../../assets/logo-expert.png";
 import Button from "../Button";
 import "./Navbar.style.css";
 
 export default function NavbarClient() {
-
-  const navigate = useNavigate();
+  let navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
- 
+    dispatch(logoutUser());
+    navigate("/");
   };
 
   return (
@@ -40,7 +44,7 @@ export default function NavbarClient() {
         buttonStyle="px-6 py-2 bg-lightSecondary rounded-full text-primary font-bold h-fit hover:bg-darkSecondary border-white border-2"
       />
       <Button
-        name={"Salir sesión"}
+        name={"Cerrar sesión"}
         buttonStyle="px-6 py-2 bg-lightSecondary rounded-full text-primary font-bold h-fit hover:bg-darkSecondary border-white border-2"
         onClick={handleLogout}
       />

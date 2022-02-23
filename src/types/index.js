@@ -1,6 +1,6 @@
 const types = {
-  register: "[auth] Register",
-  logout: "[auth] Logout",
+  registerUser: "[auth] Register",
+  logoutUser: "[auth] Logout",
 };
 
 export default types;

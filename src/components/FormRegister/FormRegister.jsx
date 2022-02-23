@@ -2,8 +2,14 @@ import React from 'react';
 import { useForm } from "../../utils/hooks/useForm";
 import Input from '../Input';
 import Button from '../Button';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { registerUser } from '../../store/actions/register.action';
+
 
 export default function FormRegister() {
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
   const initialUser = { name: "", email: "", password: "",passwordAgain: "" };
   const [formValues, handleInputChange, reset] = useForm(initialUser);
   const { name, email, password,passwordAgain } = formValues;
@@ -11,8 +17,10 @@ export default function FormRegister() {
   const handleForm = (e) => {
     e.preventDefault();
     //handle redux thunk
-    
+    dispatch(registerUser({name,email,password}));
+    //handle navigate to dashboard
     reset();
+    navigate("/dashboard");
   }
   return (
     <form className="mt-6" action="#" methos="POST">
@@ -58,12 +66,16 @@ export default function FormRegister() {
       </div>
       <Button
         name="Registrarse"
+        buttonStyle="w-full block bg-blueThird hover:bg-darkSecondary focus:bg-blueThird font-semibold rounded-lg
+        px-4 py-2 mt-4 border border-dark"
         onClick={handleForm}
       />
       <hr className="my-6 border-gray-300 w-full" />
 
       <Button
         name="Ya tengo una cuenta"
+        buttonStyle="w-full block bg-blueThird hover:bg-darkSecondary focus:bg-blueThird font-semibold rounded-lg
+        px-4 py-2 mt-4 border border-dark"
       />
       <button
         type="submit"
