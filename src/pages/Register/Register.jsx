@@ -25,7 +25,6 @@ function Register() {
             <div className=" bg-white w-full h-90 py-8 px-8   ">
               <div className="pb-10 px-10 border-4 border-dark">
                 <h1 className="text-xl pt-5 md:text-2xl font-bold leading-tight mt-12 flex justify-center">
-                  {" "}
                   Bienvenido
                 </h1>
                 <FormRegister />

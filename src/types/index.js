@@ -1,5 +1,6 @@
 const types = {
   registerUser: "[auth] Register",
+  loginUser: "[auth] Login",
   logoutUser: "[auth] Logout",
 };
 

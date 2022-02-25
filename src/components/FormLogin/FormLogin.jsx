@@ -1,24 +1,46 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from '../../utils/hooks/useForm';
+import { useDispatch } from 'react-redux';
+import { startLoginUser } from '../../store/actions/login.action';
 import Input from '../Input';
 import Button from '../Button';
 
+
+
 export default function FormLogin() {
-  const navigate = useNavigate();
+  let navigate = useNavigate();
+  const dispatch = useDispatch();
+  const initialUser = { email: "", password: "" };
+  const [formValues, handleInputChange, reset] = useForm(initialUser);
+  const {email, password} = formValues;
 
   const handleLogin = () => {
+   //handle redux thunk
+   dispatch(startLoginUser({email, password}));
    
+   reset();
+   navigate("/dashboard");
   };
 
   return (
-    <form className="mt-6" action="#" methos="POST">
-      <div>
-        <Input type="email" name="Ingresar Usuario" />
-      </div>
-      <div className="mt-4">
-        <Input type="password" name="Ingresar Contraseña" />
-      </div>
-
+    <form className="mt-6">
+      <Input
+          type="email"
+          name="email"
+          placeholder="Email"
+          autoComplete="on"
+          value={email}
+          onChange={handleInputChange}
+        />
+      <Input
+          type="password"
+          name="password"
+          placeholder="Contraseña"
+          autoComplete="off"
+          value={password}
+          onChange={handleInputChange}
+        />
       <div className="mt-4 mb-8 form-check">
         <input
           type="checkbox"

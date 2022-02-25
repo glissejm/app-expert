@@ -118,7 +118,7 @@ const Questions = [
     difficult: 'Difícil',
   },
   {
-    id: 19,
+    id: 20,
     name: 'Recta dorada',
     topic: 'Geometría',
     difficult: 'Medio',
@@ -127,7 +127,7 @@ const Questions = [
 
 const listQuestion = Questions.map((question) => (
   <QuestionBox
-    id={question.id}
+    key={question.id}
     name={question.name}
     topic={question.topic}
     difficult={question.difficult}

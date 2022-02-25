@@ -1,23 +1,23 @@
 import types from "../../types";
 import { apiClient } from "../axiosApi";
 
-export const startRegisterUser = (user) => {
+export const startLoginUser = (user) => {
   return async (dispatch) => {
     try {
-      const response = await apiClient("/signup", user, "POST");
+      const response = await apiClient("/signin", user, "POST");
       const data = response.data;
       //store the user
       //with the action
-      dispatch(registerUser(data));
+      dispatch(loginUser(data));
     } catch (e) {
       console.log(e);
     }
   };
 };
 
-export function registerUser(user) {
+export function loginUser(user) {
   return {
-    type: types.registerUser,
+    type: types.loginUser,
     payload: user,
   };
 }

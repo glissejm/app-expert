@@ -4,7 +4,7 @@ import Input from '../Input';
 import Button from '../Button';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { registerUser } from '../../store/actions/register.action';
+import { startRegisterUser } from '../../store/actions/register.action';
 
 
 export default function FormRegister() {
@@ -17,14 +17,13 @@ export default function FormRegister() {
   const handleForm = (e) => {
     e.preventDefault();
     //handle redux thunk
-    dispatch(registerUser({name,email,password}));
+    dispatch(startRegisterUser({name,email,password}));
     //handle navigate to dashboard
     reset();
     navigate("/dashboard");
   }
   return (
-    <form className="mt-6" action="#" methos="POST">
-      <div>
+    <form className="mt-6">
         <Input
           type="text"
           name="name"
@@ -33,8 +32,6 @@ export default function FormRegister() {
           value={name}
           onChange={handleInputChange}
         />
-      </div>
-      <div>
         <Input
           type="email"
           name="email"
@@ -43,8 +40,6 @@ export default function FormRegister() {
           value={email}
           onChange={handleInputChange}
         />
-      </div>
-      <div>
         <Input
           type="password"
           name="password"
@@ -53,8 +48,6 @@ export default function FormRegister() {
           value={password}
           onChange={handleInputChange}
         />
-      </div>
-      <div>
         <Input
           type="password"
           name="passwordAgain"
@@ -63,7 +56,6 @@ export default function FormRegister() {
           value={passwordAgain}
           onChange={handleInputChange}
         />
-      </div>
       <Button
         name="Registrarse"
         buttonStyle="w-full block bg-blueThird hover:bg-darkSecondary focus:bg-blueThird font-semibold rounded-lg
