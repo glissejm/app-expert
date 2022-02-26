@@ -22,7 +22,9 @@ export default function FormLogin() {
    reset();
    navigate("/dashboard");
   };
-
+  const handleToregister= () => {
+    navigate("/register")
+  }
   return (
     <form className="mt-6">
       <Input
@@ -54,7 +56,7 @@ export default function FormLogin() {
 
       <Button
         name="Iniciar Sesión"
-        buttonStyle="w-full block bg-blueThird hover:bg-darkSecondary focus:bg-blueThird font-semibold rounded-lg
+        buttonStyle="w-full block bg-secondary hover:bg-four focus:bg-five font-semibold rounded-lg
     px-4 py-2 mt-4 border border-dark"
         onClick={handleLogin}
       />
@@ -63,16 +65,17 @@ export default function FormLogin() {
 
       <button
         type="button"
-        className="w-full block bg-blueSecondary hover:bg-white focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-2 border border-gray-300"
+        className="w-full block bg-five hover:bg-white focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-2 border border-gray-300"
       >
         <div className="flex items-center justify-center">
           <span className="ml-4">Iniciar sesion con Google</span>
         </div>
       </button>
       <Button
-        name="Registrarse"
-        buttonStyle="w-full block bg-blueThird hover:bg-darkSecondary focus:bg-blueThird font-semibold rounded-lg
+        name="No tengo una cuenta"
+        buttonStyle="w-full block bg-secondary hover:bg-four focus:bg-five font-semibold rounded-lg
     px-4 py-2 mt-4 border border-dark"
+        onClick={handleToregister}
       />
     </form>
   );

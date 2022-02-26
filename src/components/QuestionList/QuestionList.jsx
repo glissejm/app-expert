@@ -127,22 +127,26 @@ const Questions = [
 
 const listQuestion = Questions.map((question) => (
   <QuestionBox
+    className="question"
     key={question.id}
     name={question.name}
     topic={question.topic}
     difficult={question.difficult}
   />
 ));
-
+  
 export default function QuestionList() {
   return (
     <section className="w-3/4 flex flex-col items-center">
+      
       <div id="box__color" className="bg-[#02080F] rounded-xl">
+        <div className='flex justify-around text-white'> <h3>Nombre</h3> <h3>Tema / Curso</h3> <h3>Dificultad</h3></div>
         <div
           className="bg-[#02080F]  flex flex-col items-center"
           id="question__box"
         >
           {listQuestion}
+          <button className="question bg-[#02080F] border border-[#AEFEFF] rounded-full text-[#AEFEFF] text-center">Cargar más preguntas</button>
         </div>
       </div>
     </section>

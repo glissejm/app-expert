@@ -18,35 +18,35 @@ export default function NavbarClient() {
   };
 
   return (
-    <nav className="flex bg-[#072227] justify-around items-center" id="navbar">
+    <nav className="flex bg-third justify-around items-center" id="navbar">
       <NavLink
-        className="text-lightSecondary font-black text-xl"
+        className="text-secondary font-black text-xl"
         to="/dashboard"
       >
-        <img src={Logo} alt="logo-expert" style={{ width: "160px" }} />
+        <img src={Logo} alt="logo-expert" style={{ width: "130px" }} />
       </NavLink>
-      <p className="font-bold text-white text-lg">125 ejercicios resueltos</p>
-      <p className="font-bold text-lg text-white">Hola {userName}!</p>
+      <p className=" text-white text-lg">125 ejercicios resueltos</p>
+      <p className=" text-lg text-white">Hola {userName}!</p>
       <input
         type="text"
-        className="border-2 rounded-full px-16 py-1.5 border-black"
+        className="border-1 rounded-full px-16 py-1.5 border-black"
         placeholder="Buscar pregunta"
         style={{ backgroundColor: "#AEFEFF" }}
       />
       <NavLink to="/simulacro">
         <Button
           name="Simulacro"
-          buttonStyle="px-6 py-2 bg-lightSecondary rounded-full text-primary font-bold h-fit hover:bg-darkSecondary border-white border-2"
+          buttonStyle="px-6 py-2 bg-secondary rounded-full text-third h-fit hover:bg-five border border-black"
         />
       </NavLink>
 
       <Button
         name="Perfil"
-        buttonStyle="px-6 py-2 bg-lightSecondary rounded-full text-primary font-bold h-fit hover:bg-darkSecondary border-white border-2"
+        buttonStyle="px-6 py-2 bg-secondary rounded-full text-third h-fit hover:bg-five border border-black"
       />
       <Button
         name="Cerrar sesión"
-        buttonStyle="px-6 py-2 bg-lightSecondary rounded-full text-primary font-bold h-fit hover:bg-darkSecondary border-white border-2"
+        buttonStyle="px-6 py-2 bg-secondary rounded-full text-third h-fit hover:bg-five border border-black"
         onClick={handleLogout}
       />
     </nav>

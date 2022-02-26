@@ -1,13 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../assets/logo.jpg';
+import logo from '../assets/logo-expert.png';
 
 export default function Navbar() {
   return (
-    <nav className="bg-darkPrimary flex justify-between px-8">
-      <NavLink className="text-lightSecondary font-black text-xl" to="/">
+    <nav className="bg-third flex justify-between px-8">
+      <NavLink className="text-secondary font-black text-xl my-3" to="/">
         <picture>
-          <img style={{ width: "160px" }} src={logo} alt="Logo" />
+          <img style={{ width: "130px" }} src={logo} alt="Logo" />
         </picture>
       </NavLink>
 
@@ -15,7 +15,7 @@ export default function Navbar() {
         <ul className="flex content-center pr-8 gap-x-3 self-center">
           <li>
             <NavLink
-              className="text-lightSecondary  text-xl"
+              className="text-secondary  text-xl"
               to="/comprar"
             >
               Comprar
@@ -23,7 +23,7 @@ export default function Navbar() {
           </li>
           <li>
             <NavLink
-              className="text-lightSecondary  text-xl"
+              className="text-secondary  text-xl"
               to="/nosotros"
             >
               Nosotros
@@ -32,13 +32,13 @@ export default function Navbar() {
         </ul>
         <div className="flex gap-x-3 self-center">
           <NavLink
-            className="px-6 py-2 bg-lightSecondary rounded-full text-primary  h-fit hover:bg-darkSecondary border-white border-2 text-lg"
+            className="px-6 py-2 bg-secondary rounded-full text-primary  h-fit hover:bg-five border-white border text-lg"
             to="/login"
           >
             Ingresar
           </NavLink>
           <NavLink
-            className="px-6 py-2 bg-lightSecondary rounded-full text-primary h-fit hover:bg-darkSecondary border-white border-2 text-lg"
+            className="px-6 py-2 bg-secondary rounded-full text-primary h-fit hover:bg-five border-white border text-lg"
             to="/register"
           >
             Registrar
