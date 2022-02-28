@@ -29,24 +29,23 @@ export default function NavbarClient() {
       <p className=" text-lg text-white">Hola {userName}!</p>
       <input
         type="text"
-        className="border-1 rounded-full px-16 py-1.5 border-black"
+        className="rounded-full px-16 py-1.5 bg-slate-200 border border-white placeholder-slate-900"
         placeholder="Buscar pregunta"
-        style={{ backgroundColor: "#AEFEFF" }}
       />
       <NavLink to="/simulacro">
         <Button
           name="Simulacro"
-          buttonStyle="px-6 py-2 bg-secondary rounded-full text-third h-fit hover:bg-five border border-black"
+          buttonStyle="px-6 py-2 bg-third rounded-full text-yellow h-fit hover:text-orange hover:border-orange border-2 border-yellow"
         />
       </NavLink>
 
       <Button
         name="Perfil"
-        buttonStyle="px-6 py-2 bg-secondary rounded-full text-third h-fit hover:bg-five border border-black"
+        buttonStyle="px-6 py-2 bg-third rounded-full text-yellow h-fit hover:text-orange hover:border-orange border-2 border-yellow"
       />
       <Button
         name="Cerrar sesión"
-        buttonStyle="px-6 py-2 bg-secondary rounded-full text-third h-fit hover:bg-five border border-black"
+        buttonStyle="px-6 py-2 bg-third rounded-full text-secondary h-fit hover:text-pink hover:border-pink border-2 border-secondary"
         onClick={handleLogout}
       />
     </nav>

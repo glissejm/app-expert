@@ -139,14 +139,14 @@ export default function QuestionList() {
   return (
     <section className="w-3/4 flex flex-col items-center">
       
-      <div id="box__color" className="bg-[#02080F] rounded-xl">
-        <div className='flex justify-around text-white'> <h3>Nombre</h3> <h3>Tema / Curso</h3> <h3>Dificultad</h3></div>
+      <div id="box__color" className="bg-third rounded-xl">
+        <div className='flex justify-around text-white font-bold text-lg'> <h3>Nombre</h3> <h3>Tema / Curso</h3> <h3>Dificultad</h3></div>
         <div
-          className="bg-[#02080F]  flex flex-col items-center"
+          className="bg-third  flex flex-col items-center"
           id="question__box"
         >
           {listQuestion}
-          <button className="question bg-[#02080F] border border-[#AEFEFF] rounded-full text-[#AEFEFF] text-center">Cargar más preguntas</button>
+          <button className="question bg-third border rounded-full text-secondary hover:text-yellow hover:border-yellow text-center">Cargar más preguntas</button>
         </div>
       </div>
     </section>

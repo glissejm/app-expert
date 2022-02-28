@@ -56,7 +56,7 @@ export default function FormLogin() {
 
       <Button
         name="Iniciar Sesión"
-        buttonStyle="w-full block bg-secondary hover:bg-four focus:bg-five font-semibold rounded-lg
+        buttonStyle="w-full block bg-secondary hover:bg-yellow focus:bg-five font-semibold rounded-lg
     px-4 py-2 mt-4 border border-dark"
         onClick={handleLogin}
       />
@@ -73,7 +73,7 @@ export default function FormLogin() {
       </button>
       <Button
         name="No tengo una cuenta"
-        buttonStyle="w-full block bg-secondary hover:bg-four focus:bg-five font-semibold rounded-lg
+        buttonStyle="w-full block bg-secondary hover:bg-yellow focus:bg-five font-semibold rounded-lg
     px-4 py-2 mt-4 border border-dark"
         onClick={handleToregister}
       />

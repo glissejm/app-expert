@@ -6,7 +6,7 @@ import "./Dashboard.style.css";
 
 export default function Dashboard() {
   return (
-    <main id="dashboard">
+    <main id="dashboard" className=" bg-slate-100">
       <NavbarClient />
       <div className="py-6 flex justify-center">
         <h2 className="text-4xl font-bold">Comienza a practicar</h2>
