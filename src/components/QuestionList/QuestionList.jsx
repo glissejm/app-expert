@@ -118,7 +118,7 @@ const Questions = [
     difficult: 'Difícil',
   },
   {
-    id: 19,
+    id: 20,
     name: 'Recta dorada',
     topic: 'Geometría',
     difficult: 'Medio',
@@ -127,22 +127,26 @@ const Questions = [
 
 const listQuestion = Questions.map((question) => (
   <QuestionBox
-    id={question.id}
+    className="question"
+    key={question.id}
     name={question.name}
     topic={question.topic}
     difficult={question.difficult}
   />
 ));
-
+  
 export default function QuestionList() {
   return (
     <section className="w-3/4 flex flex-col items-center">
-      <div id="box__color" className="bg-[#02080F] rounded-xl">
+      
+      <div id="box__color" className="bg-third rounded-xl">
+        <div className='flex justify-around text-white font-bold text-lg'> <h3>Nombre</h3> <h3>Tema / Curso</h3> <h3>Dificultad</h3></div>
         <div
-          className="bg-[#02080F]  flex flex-col items-center"
+          className="bg-third  flex flex-col items-center"
           id="question__box"
         >
           {listQuestion}
+          <button className="question bg-third border rounded-full text-secondary hover:text-yellow hover:border-yellow text-center">Cargar más preguntas</button>
         </div>
       </div>
     </section>

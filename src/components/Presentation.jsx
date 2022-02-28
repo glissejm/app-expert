@@ -21,7 +21,7 @@ export default function Presentation() {
           </p>
           <Button
             name="Compra un plan"
-            buttonStyle="px-6 py-2 bg-lightSecondary rounded-full text-primary font-bold h-fit hover:bg-darkSecondary border-white border-2 w-fit border border-black mt-4"
+            buttonStyle="px-6 py-2 bg-secondary rounded-full text-third font-bold h-fit hover:bg-yellow border-2 w-fit border-black mt-4"
           />
         </div>
         <figure className="flex justify-center col-span-12 md:col-span-5">

@@ -1,12 +1,14 @@
-import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
-import AuthContext from '../auth/authContext';
+import PropTypes from "prop-types";
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function PublicRoute({ children }) {
-  const { user } = useContext(AuthContext);
+  const logged = useSelector((state) => state.auth.logged);
+  const user = { logged: logged };
 
-  return !user.logged ? children : <Navigate to="/" />;
+  //true ->
+  return !user.logged ? children : <Navigate to="/dashboard" />;
 }
 
 PublicRoute.propTypes = {
