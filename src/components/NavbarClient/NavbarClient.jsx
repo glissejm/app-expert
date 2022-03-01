@@ -35,13 +35,13 @@ export default function NavbarClient() {
       <NavLink to="/simulacro">
         <Button
           name="Simulacro"
-          buttonStyle="px-6 py-2 bg-third rounded-full text-yellow h-fit hover:text-orange hover:border-orange border-2 border-yellow"
+          buttonStyle="px-6 py-2 bg-third rounded-full text-secondary h-fit hover:text-white hover:border-white border-2 border-secondary"
         />
       </NavLink>
 
       <Button
         name="Perfil"
-        buttonStyle="px-6 py-2 bg-third rounded-full text-yellow h-fit hover:text-orange hover:border-orange border-2 border-yellow"
+        buttonStyle="px-6 py-2 bg-third rounded-full text-secondary h-fit hover:text-white hover:border-white border-2 border-secondary"
       />
       <Button
         name="Cerrar sesión"

@@ -146,7 +146,7 @@ export default function QuestionList() {
           id="question__box"
         >
           {listQuestion}
-          <button className="question bg-third border rounded-full text-secondary hover:text-yellow hover:border-yellow text-center">Cargar más preguntas</button>
+          <button className="question bg-third border rounded-full text-secondary hover:text-third hover:bg-white text-center py-2">Cargar más preguntas</button>
         </div>
       </div>
     </section>
