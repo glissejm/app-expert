@@ -76,7 +76,7 @@ export default function DashboardFilters() {
           </div>
         </div>
       </div>
-      <button className="mt-4 py-2 px-6 rounded-2xl text-third border-2 border-third font-bold bg-yellow hover:bg-orange">Limpiar filtros</button>
+      <button className="mt-4 py-2 px-6 rounded-2xl text-third border-2 border-third font-bold bg-secondary hover:bg-white">Limpiar filtros</button>
     </section>
   );
 }

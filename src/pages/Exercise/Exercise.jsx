@@ -9,8 +9,9 @@ export default function Exercise() {
       <NavbarClient />
       <div className="flex justify-end items-center gap-x-2 py-4 px-6">
         <h2 className="text-third mr-4  text-xl">5:30</h2>
-        <Button name="Iniciar / Detener" buttonStyle="border border-black rounded-full py-1 px-4 bg-third text-secondary hover:bg-primary" />
-        <Button name="Finalizar" buttonStyle="border border-black rounded-full py-1 px-4 bg-third text-secondary hover:bg-primary" />
+        <Button name="Iniciar / Detener" buttonStyle="border border-third rounded-full py-1 px-4 bg-secondary text-third hover:bg-white" />
+        <Button name="Siguiente pregunta" buttonStyle="border border-third rounded-full py-1 px-4 bg-secondary text-third hover:bg-white" />
+        <Button name="Finalizar" buttonStyle="border border-third rounded-full py-1 px-4 bg-secondary text-third hover:bg-white" />
       </div>
       <section className="grid grid-cols-12 grid-rows-2 gap-4 px-6 pt-1">
         <CoursesDetail

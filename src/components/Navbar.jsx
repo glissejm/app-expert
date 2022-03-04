@@ -15,7 +15,7 @@ export default function Navbar() {
         <ul className="flex content-center pr-8 gap-x-3 self-center">
           <li>
             <NavLink
-              className="text-secondary  text-xl hover:text-yellow"
+              className="text-secondary  text-xl hover:text-white"
               to="/comprar"
             >
               Comprar
@@ -23,7 +23,7 @@ export default function Navbar() {
           </li>
           <li>
             <NavLink
-              className="text-secondary  text-xl hover:text-yellow"
+              className="text-secondary  text-xl hover:text-white"
               to="/nosotros"
             >
               Nosotros
@@ -32,13 +32,13 @@ export default function Navbar() {
         </ul>
         <div className="flex gap-x-3 self-center">
           <NavLink
-            className="px-6 py-2 bg-third rounded-full text-secondary  h-fit hover:text-yellow hover:border-yellow border-secondary border-2 text-lg"
+            className="px-6 py-2 bg-third rounded-full text-secondary  h-fit hover:text-white hover:border-white border-secondary border-2 text-lg"
             to="/login"
           >
             Ingresar
           </NavLink>
           <NavLink
-            className="px-6 py-2 bg-secondary rounded-full text-third h-fit hover:border-yellow hover:bg-yellow border-secondary border-2 text-lg"
+            className="px-6 py-2 bg-secondary rounded-full text-third h-fit hover:border-white hover:bg-white border-secondary border-2 text-lg"
             to="/register"
           >
             Registrar
