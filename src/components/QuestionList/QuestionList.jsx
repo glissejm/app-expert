@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
+import { apiClient } from '../../store/axiosApi';
 import './QuestionList.style.css';
 import QuestionBox from '../QuestionBox';
 
@@ -125,17 +126,26 @@ const Questions = [
   },
 ];
 
-const listQuestion = Questions.map((question) => (
-  <QuestionBox
-    className="question"
-    key={question.id}
-    name={question.name}
-    topic={question.topic}
-    difficult={question.difficult}
-  />
-));
-  
 export default function QuestionList() {
+  const [listquestion, setListquestion] = useState([]);
+  const getQuestions = async () => {
+    const response = await apiClient("/dashboard","GET");
+    const data = response.data;
+    setListquestion(data);
+  }
+  useEffect(() => {
+    getQuestions();
+  }, [])
+
+  const listQuestion = listquestion.map((question) => (
+    <QuestionBox
+      className="question"
+      key={question.id}
+      name={question.name}
+      topic={question.topic}
+      difficult={question.difficult}
+    />
+  ));
   return (
     <section className="w-3/4 flex flex-col items-center">
       
