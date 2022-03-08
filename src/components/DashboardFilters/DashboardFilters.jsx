@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState } from 'react';
+import { useForm } from '../../utils/hooks/useForm';
 import "./DashboardFilters.style.css";
 
 export default function DashboardFilters() {
+  
+  const initialFilter = { course: "", difficult: "" };
+  
+  const [formValues, handleInputChange, reset] = useForm(initialUser);
+  
+  const {filterCourse, filterDifficult} = formValues;
+
+  useEffect(() => {
+    console.log("filterCourse", filterCourse)
+    console.log("filterDifficult", filterCourse)
+  }, [])
+
   return (
     <section
       className="flex flex-col w-1/4 items-center justify-start"
@@ -10,43 +23,43 @@ export default function DashboardFilters() {
         <div className="text-white text-xl mb-2 text-center">Filtrar por curso</div>
         <div>
           <div className="form-check">
-            <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-secondary bg-third checked:bg-orange checked:border-orange focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value="geometria" name="filterCourse" id="scf1"/>
+            <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-secondary bg-third checked:bg-orange checked:border-orange focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value="geometria" name="filterCourse" id="scf1" onChange={handleInputChange}/>
             <label className="form-check-label inline-block text-secondary" for="scf1">
               Geometría
             </label>
           </div>
           <div className="form-check">
-            <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-secondary bg-third checked:bg-orange checked:border-orange focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value="algebra" name="filterCourse" id="scf2"/>
+            <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-secondary bg-third checked:bg-orange checked:border-orange focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value="algebra" name="filterCourse" id="scf2" onChange={handleInputChange}/>
             <label className="form-check-label inline-block text-secondary" for="scf2">
               Álgebra
             </label>
           </div>
           <div className="form-check">
-            <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-secondary bg-third checked:bg-orange checked:border-orange focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value="trigonometria" name="filterCourse" id="scf3"/>
+            <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-secondary bg-third checked:bg-orange checked:border-orange focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value="trigonometria" name="filterCourse" id="scf3" onChange={handleInputChange}/>
             <label className="form-check-label inline-block text-secondary" for="scf3">
               Trigonometría
             </label>
           </div>
           <div className="form-check">
-            <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-secondary bg-third checked:bg-orange checked:border-orange focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value="aritmetica" name="filterCourse" id="scf4"/>
+            <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-secondary bg-third checked:bg-orange checked:border-orange focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value="aritmetica" name="filterCourse" id="scf4" onChange={handleInputChange}/>
             <label className="form-check-label inline-block text-secondary" for="scf4">
               Aritmética
             </label>
           </div>
           <div className="form-check">
-            <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-secondary bg-third checked:bg-orange checked:border-orange focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value="rm" name="filterCourse" id="scf5"/>
+            <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-secondary bg-third checked:bg-orange checked:border-orange focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value="rm" name="filterCourse" id="scf5" onChange={handleInputChange}/>
             <label className="form-check-label inline-block text-secondary" for="scf5">
               R. Matemático
             </label>
           </div>
           <div className="form-check">
-            <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-secondary bg-third checked:bg-orange checked:border-orange focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value="quimica" name="filterCourse" id="scf6"/>
+            <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-secondary bg-third checked:bg-orange checked:border-orange focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value="quimica" name="filterCourse" id="scf6" onChange={handleInputChange}/>
             <label className="form-check-label inline-block text-secondary" for="scf6">
               Química
             </label>
           </div>
           <div className="form-check">
-            <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-secondary bg-third checked:bg-orange checked:border-orange focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value="fisica" name="filterCourse" id="scf7"/>
+            <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-secondary bg-third checked:bg-orange checked:border-orange focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value="fisica" name="filterCourse" id="scf7" onChange={handleInputChange}/>
             <label className="form-check-label inline-block text-secondary" for="scf7">
               Física
             </label>
