@@ -1,23 +1,26 @@
 import React,{useState, useEffect} from 'react';
+import { useSelector } from 'react-redux';
 import { apiClient } from '../../store/axiosApi';
 import './QuestionList.style.css';
 import QuestionBox from '../QuestionBox';
 
 export default function QuestionList() {
   const [listquestion, setListquestion] = useState([]);
-  const getQuestions = async () => {
-    const response = await apiClient("/dashboard","GET");
+  const query = useSelector(state=>state.query.value); 
+  const getQuestions = async (query= "") => {
+    const response = await apiClient(`/dashboard${query}`,"GET");
     const data = response.data;
     setListquestion(data);
-  }
+  };
+
   useEffect(() => {
-    getQuestions();
-  }, [])
+    getQuestions(query);
+  }, [query])
 
   const listQuestion = listquestion.map((question) => (
     <QuestionBox
       className="question"
-      key={question.id}
+      key={question._id}
       name={question.name}
       topic={question.topic}
       difficult={question.difficult}
@@ -32,8 +35,15 @@ export default function QuestionList() {
           className="bg-third  flex flex-col items-center"
           id="question__box"
         >
-          {listQuestion}
-          <button className="question bg-third border rounded-full text-secondary hover:text-third hover:bg-white text-center py-2">Cargar más preguntas</button>
+          {listquestion.length === 0? 
+            <div className='text-white my-4'>No hay preguntas</div>
+            :
+            <>
+              {listQuestion}
+              <button className="question bg-third border-4 rounded-full text-secondary hover:text-third hover:bg-white text-center py-2 shadow-lg">Cargar más preguntas</button>
+            </>
+          }
+          
         </div>
       </div>
     </section>
