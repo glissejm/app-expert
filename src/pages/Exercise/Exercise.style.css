@@ -1,0 +1,16 @@
+.reflex-container.vertical > .reflex-splitter:hover, .reflex-container.vertical > .reflex-splitter.active {
+    background-color: #aefeff;
+    border-right: 1px solid #aefeff;
+    border-left: 1px solid #aefeff;
+    width: 10px;
+    border-radius: 10px;
+}
+
+.reflex-container.horizontal > .reflex-splitter:hover, .reflex-container.horizontal > .reflex-splitter.active {
+    background-color: #aefeff;
+    border-right: 1px solid #aefeff;
+    border-left: 1px solid #aefeff;
+    width: 100%;
+    border-radius: 10px;
+    height: 10px;
+}
