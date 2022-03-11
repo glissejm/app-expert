@@ -3,6 +3,7 @@ import { ReflexContainer, ReflexElement, ReflexSplitter } from "react-reflex";
 import Button from "../../components/Button";
 import CoursesDetail from "../../components/CoursesDetail";
 import NavbarClient from "../../components/NavbarClient/NavbarClient";
+import './Exercise.style.css';
 import "react-reflex/styles.css";
 
 const Exercise = () => {
