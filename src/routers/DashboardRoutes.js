@@ -8,6 +8,7 @@ export default function DashboardRoutes() {
     <Routes>
       <Route path="dashboard" element={<Dashboard />} />
       <Route path="simulacro" element={<Exercise />} />
+      <Route path="dashboard/:id" element={<Exercise />} />
     </Routes>
   );
 }
