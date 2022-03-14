@@ -1,17 +1,23 @@
 import React,{useState, useEffect} from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import { logoutUser } from '../../store/actions/logout.action';
 import { apiClient } from '../../store/axiosApi';
 import QuestionBox from '../QuestionBox';
 
 import './QuestionList.style.css';
 
 export default function QuestionList() {
+  const dispatch = useDispatch();
   const [listquestion, setListquestion] = useState([]);
   const query = useSelector(state=>state.query.value); 
   const getQuestions = async (query= "") => {
-    const response = await apiClient(`/dashboard${query}`,"GET");
-    const data = response.data;
-    setListquestion(data);
+    try{
+      const response = await apiClient(`/dashboard${query}`,"GET");
+      const data = response.data;
+      setListquestion(data);
+    }catch(e){
+      dispatch(logoutUser());
+    }
   };
 
   useEffect(() => {

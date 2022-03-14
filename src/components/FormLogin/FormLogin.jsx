@@ -1,10 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import {GoogleLogin} from "react-google-login"
 import { useForm } from '../../utils/hooks/useForm';
 import { useDispatch } from 'react-redux';
-import { startLoginUser } from '../../store/actions/login.action';
+import { loginUser, startLoginUser } from '../../store/actions/login.action';
 import Input from '../Input';
 import Button from '../Button';
+import { apiClient } from '../../store/axiosApi';
 
 
 
@@ -22,6 +24,17 @@ export default function FormLogin() {
    reset();
    navigate("/dashboard");
   };
+
+  const handleGoogleAuth = async (googleData) => {
+    try{
+      const {data} = await apiClient("/logingoogle",{token: googleData.tokenId},"POST");
+      //once we get the data, we have to store data using dispatch
+      dispatch(loginUser({name:data.name,email:data.email}));
+      navigate("/dashboard");
+    }catch(e){
+      console.log("error",e);
+    }
+  }
   const handleToregister= () => {
     navigate("/register")
   }
@@ -61,16 +74,17 @@ export default function FormLogin() {
         onClick={handleLogin}
       />
 
-      <hr className="my-6 border-gray-300 w-full" />
+      <hr className="my-4 border-gray-300 w-full" />
 
-      <button
-        type="button"
-        className="w-full block  bg-blue-600 hover:bg-white focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-2 border border-gray-300"
-      >
-        <div className="flex items-center justify-center">
-          <span className="ml-4">Iniciar sesion con Google</span>
-        </div>
-      </button>
+      <GoogleLogin
+        clientId={process.env.REACT_APP_GOOGLE_KEY_ID}
+        buttonText="Iniciar sesión con Google"
+        theme='dark' 
+        onSuccess={handleGoogleAuth}
+        onFailure={handleGoogleAuth}
+        cookiePolicy={'single_host_origin'}
+        className="w-full flex justify-center"
+      />
       <Button
         name="No tengo una cuenta"
         buttonStyle="w-full block bg-secondary hover:bg-white focus:bg-third focus:text-white font-semibold rounded-lg
