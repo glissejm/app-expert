@@ -1,11 +1,12 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
+import About from '../../components/About';
 
 export default function Nosotros() {
   return (
     <>
       <Navbar />
-      <h1>Este es la página de Nosotros</h1>
+      <About />
     </>
   );
 }
