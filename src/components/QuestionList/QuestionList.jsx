@@ -1,8 +1,9 @@
 import React,{useState, useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import { apiClient } from '../../store/axiosApi';
-import './QuestionList.style.css';
 import QuestionBox from '../QuestionBox';
+
+import './QuestionList.style.css';
 
 export default function QuestionList() {
   const [listquestion, setListquestion] = useState([]);
@@ -17,14 +18,17 @@ export default function QuestionList() {
     getQuestions(query);
   }, [query])
 
+
   const listQuestion = listquestion.map((question) => (
-    <QuestionBox
-      className="question"
-      key={question._id}
-      name={question.name}
-      topic={question.topic}
-      difficult={question.difficult}
-    />
+      <QuestionBox
+        className="question"
+        id={question._id}
+        key={question._id}
+        name={question.name}
+        course={question.course}
+        topic={question.topic}
+        difficult={question.difficult}
+      />
   ));
   return (
     <section className="w-3/4 flex flex-col items-center">

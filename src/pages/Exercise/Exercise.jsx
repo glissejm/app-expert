@@ -1,22 +1,57 @@
-import React, { useState } from "react";
+import React,{useState,useEffect} from "react";
+import { useStopwatch } from "react-timer-hook"
+import { useParams, useNavigate} from "react-router-dom";
 import { ReflexContainer, ReflexElement, ReflexSplitter } from "react-reflex";
+import {apiClient} from "../../store/axiosApi"
 import Button from "../../components/Button";
-import CoursesDetail from "../../components/CoursesDetail";
+import OptionQuestion from "../../components/OptionsQuestion/OptionQuestion";
+import ContentQuestion from "../../components/ContentQuestion";
+import SolutionQuestion from "../../components/SolutionQuestion";
+import VideoSolution from "../../components/VideoSolution/VideoSolution";
 import NavbarClient from "../../components/NavbarClient/NavbarClient";
 import './Exercise.style.css';
 import "react-reflex/styles.css";
 
+const initialStateQuestion = {
+  _id:"",
+  name:"",
+  course:"",
+  topic:"",
+  difficult:"",
+  questionText:"",
+  solutionText:"",
+  opciones:[]
+}
+
 const Exercise = () => {
-  const [resizeProps, setResizeProps] = useState(() => { });
+  const {id} = useParams();
+  const navigate = useNavigate();
+  const [data, setData] = useState(initialStateQuestion);
+  //setResizeProps never used
+  const resizeProps = () => {};
+  const {seconds, minutes, hours, start, pause, reset} = useStopwatch({autoStart: false});
+
+  //get data, all question
+  const handleDataQuestion = async () => {
+    const response = await apiClient(`/dashboard/${id}`,"GET");
+    setData(response.data);
+  }
+  const handleToDashboard = () => {
+    navigate("/dashboard");
+  }
+  useEffect(() => {
+    handleDataQuestion();
+  }, []);
 
   return (
     <>
       <NavbarClient />
       <div className="flex justify-end items-center gap-x-2 py-4 px-6">
-        <h2 className="text-third mr-4  text-xl">5:30</h2>
-        <Button name="Iniciar / Detener" buttonStyle="border border-third rounded-full py-1 px-4 bg-secondary text-third hover:bg-white" />
-        <Button name="Siguiente pregunta" buttonStyle="border border-third rounded-full py-1 px-4 bg-secondary text-third hover:bg-white" />
-        <Button name="Finalizar" buttonStyle="border border-third rounded-full py-1 px-4 bg-secondary text-third hover:bg-white" />
+        <div className="text-third mr-4  text-xl"><span>{Math.floor(hours/10)}{hours%10}</span>:<span>{Math.floor(minutes/10)}{minutes%10}</span>:<span>{Math.floor(seconds/10)}{seconds%10}</span></div>
+        <Button onClick={start} name="Iniciar" buttonStyle="border border-third rounded-full py-1 px-4 bg-third text-white hover:bg-white hover:text-third hover:border-third hover:border" />
+        <Button onClick={pause} name="Pausa" buttonStyle="border border-third rounded-full py-1 px-4 bg-third text-white hover:bg-white hover:text-third hover:border-third hover:border" />
+        <Button onClick={()=>{reset(0,false)}} name="Detener" buttonStyle="border border-third rounded-full py-1 px-4 bg-third text-white hover:bg-white hover:text-third hover:border-third hover:border" />
+        <Button onClick={handleToDashboard} name="Terminar pregunta" buttonStyle="border border-third rounded-full py-1 px-4 bg-third text-white hover:bg-white hover:text-third hover:border-third hover:border" />
       </div>
 
       <div className="m-0 p-0 h-screen">
@@ -24,37 +59,25 @@ const Exercise = () => {
           <ReflexElement>
             <ReflexContainer orientation="vertical">
               <ReflexElement {...resizeProps}>
-                <ReflexContainer orientation="horizontal" className={`drop-shadow-md border-2 bg-slate-200 border-third rounded-lg col-span-6 resize`}>
+                <ReflexContainer orientation="horizontal" className={`drop-shadow-md bg-white col-span-6 resize`}>
                   <ReflexElement {...resizeProps}>
-                      <CoursesDetail
-                        title="Geometría - Hallando la recta"
-                        content="Se tiene un triángulo cuyos vértices son: A(-2,1) B(4,7) C(6,-3). Halla la ecuación de la recta que pasa por el vértice A y es paralela al lado BC."
-                      />
+                      <ContentQuestion questionText={data.questionText} name={data.name}/>
                   </ReflexElement>
                   <ReflexSplitter propagate={true} {...resizeProps} />
                   <ReflexElement {...resizeProps}>
-                      <CoursesDetail
-                        title="Nuestra solución"
-                        content="Se tiene un triángulo cuyos vértices son: A(-2,1) B(4,7) C(6,-3). Halla la ecuación de la recta que pasa por el vértice A y es paralela al lado BC."
-                      />
+                      <SolutionQuestion solutionText={data.solutionText}/>
                   </ReflexElement>
                 </ReflexContainer>
               </ReflexElement>
-              <ReflexSplitter {...resizeProps} />
+              <ReflexSplitter propagate={true} {...resizeProps} />
               <ReflexElement {...resizeProps}>
-              <ReflexContainer orientation="horizontal" className={`drop-shadow-md border-2 bg-slate-200 border-third rounded-lg col-span-6 resize`}>
+              <ReflexContainer orientation="horizontal" className={`drop-shadow-md bg-white col-span-6 resize`}>
                   <ReflexElement {...resizeProps}>
-                      <CoursesDetail
-                        title="Nuestra respuesta"
-                        content="Se tiene un triángulo cuyos vértices son: A(-2,1) B(4,7) C(6,-3). Halla la ecuación de la recta que pasa por el vértice A y es paralela al lado BC."
-                        contentStyle="blur-sm"
-                      />
+                      <OptionQuestion opciones={data.opciones}/>
                   </ReflexElement>
                   <ReflexSplitter propagate={true} {...resizeProps} />
                   <ReflexElement {...resizeProps}>
-                      <CoursesDetail
-                        title="Video solución"
-                      />
+                      <VideoSolution/>
                   </ReflexElement>
                 </ReflexContainer>
               </ReflexElement>

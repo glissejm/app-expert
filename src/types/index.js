@@ -3,6 +3,7 @@ const types = {
   loginUser: "[auth] Login",
   logoutUser: "[auth] Logout",
   changequery: "[query] Query",
+  getquestionID: "[ID question] Question",
 };
 
 export default types;
