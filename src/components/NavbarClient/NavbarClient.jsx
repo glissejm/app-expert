@@ -6,13 +6,21 @@ import {logoutUser} from "../../store/actions/logout.action.js"
 import Logo from "../../assets/logo-expert.png";
 import Button from "../Button";
 import "./Navbar.style.css";
+import { apiClient } from "../../store/axiosApi/index.js";
 
 export default function NavbarClient() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleLogout = () => {
-    dispatch(logoutUser());
-    navigate("/");
+  const handleLogout = async () => {
+    try{
+      //change cookie with the server help
+      const response = apiClient("/logout","GET");
+      console.log(response);
+      dispatch(logoutUser());
+      navigate("/");
+    }catch(e){
+      console.log(e);
+    }
   };
 
   return (
@@ -43,10 +51,6 @@ export default function NavbarClient() {
         name="Cerrar sesión"
         buttonStyle="px-6 py-2 bg-third rounded-full text-secondary h-fit hover:text-white hover:border-white text-xl font-bold"
         onClick={handleLogout}
-      />
-      <Button
-        name="Perfil"
-        buttonStyle="px-6 py-2 bg-third rounded-full text-secondary h-fit hover:text-white hover:border-white text-xl font-bold"
       />
     </nav>
   );

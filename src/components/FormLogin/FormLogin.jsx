@@ -9,7 +9,6 @@ import Button from '../Button';
 import { apiClient } from '../../store/axiosApi';
 
 
-
 export default function FormLogin() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
@@ -32,7 +31,7 @@ export default function FormLogin() {
       dispatch(loginUser({name:data.name,email:data.email}));
       navigate("/dashboard");
     }catch(e){
-      console.log("error",e);
+      console.log(e.response.data.message);
     }
   }
   const handleToregister= () => {
