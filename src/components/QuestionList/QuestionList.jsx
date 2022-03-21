@@ -9,9 +9,13 @@ export default function QuestionList() {
   const [listquestion, setListquestion] = useState([]);
   const query = useSelector(state=>state.query.value); 
   const getQuestions = async (query= "") => {
-    const response = await apiClient(`/dashboard${query}`,"GET");
-    const data = response.data;
-    setListquestion(data);
+    try{
+      const response = await apiClient(`/dashboard${query}`,"GET");
+      const data = response.data;
+      setListquestion(data);
+    }catch(e){
+      console.log(e);
+    }
   };
 
   useEffect(() => {
@@ -34,7 +38,7 @@ export default function QuestionList() {
     <section className="w-3/4 flex flex-col items-center">
       
       <div id="box__color" className="bg-third rounded-xl">
-        <div className='flex justify-around text-white font-bold text-lg'> <h3>Nombre</h3> <h3>Tema / Curso</h3> <h3>Dificultad</h3></div>
+        <div className='flex justify-around text-white font-bold text-lg'> <h3>Nombre</h3> <h3>Curso / Tema</h3> <h3>Dificultad</h3></div>
         <div
           className="bg-third  flex flex-col items-center"
           id="question__box"

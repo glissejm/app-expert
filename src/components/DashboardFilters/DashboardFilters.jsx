@@ -13,7 +13,7 @@ export default function DashboardFilters() {
   }
 
   const handleDifficultChange = (e) => {
-    setDifficult(e.target.value)
+    setDifficult(e.target.value);
   }
   const handleValue = () => {
     let query="";
