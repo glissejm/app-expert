@@ -24,6 +24,7 @@ export default function AppRouter() {
         dispatch(loginUser({ name: data.name, email: data.email }));
       }
     } catch (e) {
+      console.log(e.response.data.message);
       dispatch(logoutUser());
     }
   };

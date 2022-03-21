@@ -1,14 +1,14 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {GoogleLogin} from "react-google-login"
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useForm } from "../../utils/hooks/useForm";
-import { registerUser, startRegisterUser } from '../../store/actions/register.action';
+import { registerUser } from '../../store/actions/register.action';
+import {apiClient} from "../../store/axiosApi"
 import Input from '../Input';
 import Button from '../Button';
-import {apiClient} from "../../store/axiosApi"
-
-
+import ErrorContext from '../Error/ErrorContext';
+import Error from '../Error';
 
 export default function FormRegister() {
   const dispatch = useDispatch();
@@ -16,14 +16,27 @@ export default function FormRegister() {
   const initialUser = { name: "", email: "", password: "",passwordAgain: "" };
   const [formValues, handleInputChange, reset] = useForm(initialUser);
   const { name, email, password,passwordAgain } = formValues;
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleForm = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    //handle redux thunk
-    dispatch(startRegisterUser({name,email,password}));
-    //handle navigate to dashboard
-    reset();
-    navigate("/dashboard");
+    try {
+      if(password!==passwordAgain){
+        setErrorMessage("Las contraseñas no son iguales");
+        return;
+      }
+      const response = await apiClient("/signup", {name,email,password}, "POST");
+      const data = response.data;
+      //store the user
+      //with the action
+      dispatch(registerUser(data));
+      //handle navigate to dashboard
+      reset();
+      navigate("/dashboard");
+    } catch (error) {
+      setErrorMessage(error.response.data.message);
+    }
+    
   }
   const handleTologin = () => {
     navigate("/login")
@@ -36,66 +49,72 @@ export default function FormRegister() {
       //handle navigate to dashboard
       navigate("/dashboard");
     }catch(e){
-      console.log("error",e);
+      setErrorMessage(e.response.data.message);
     }
   }
   return (
-    <form className="mt-6">
-        <Input
-          type="text"
-          name="name"
-          placeholder="Nombre de usuario"
-          autoComplete="on"
-          value={name}
-          onChange={handleInputChange}
-        />
-        <Input
-          type="email"
-          name="email"
-          placeholder="Email"
-          autoComplete="on"
-          value={email}
-          onChange={handleInputChange}
-        />
-        <Input
-          type="password"
-          name="password"
-          placeholder="Contraseña"
-          autoComplete="off"
-          value={password}
-          onChange={handleInputChange}
-        />
-        <Input
-          type="password"
-          name="passwordAgain"
-          placeholder="Repetir contraseña"
-          autoComplete="off"
-          value={passwordAgain}
-          onChange={handleInputChange}
-        />
-      <Button
-        name="Registrarse"
-        buttonStyle="w-full block bg-secondary hover:bg-white focus:bg-third focus:text-white font-semibold rounded-lg
-        px-4 py-2 mt-4 border border-dark"
-        onClick={handleForm}
-      />
-      <hr className="my-6 border-gray-300 w-full" />
+    <>
+      <ErrorContext.Provider value={{errorMessage,setErrorMessage}}>
+        <Error/>
+      </ErrorContext.Provider>
 
-      <GoogleLogin
-        clientId={process.env.REACT_APP_GOOGLE_KEY_ID}
-        buttonText="Registrarme con Google"
-        theme='dark' 
-        onSuccess={handleGoogleAuth}
-        onFailure={handleGoogleAuth}
-        cookiePolicy={'single_host_origin'}
-        className="w-full flex justify-center"
-      />
-      <Button
-        name="Ya tengo una cuenta"
-        buttonStyle="w-full block bg-secondary hover:bg-white focus:bg-third focus:text-white font-semibold rounded-lg
-        px-4 py-2 mt-4 border border-dark"
-        onClick={handleTologin}
-      />
-    </form>
+      <form className="mt-6">
+          <Input
+            type="text"
+            name="name"
+            placeholder="Nombre de usuario"
+            autoComplete="on"
+            value={name}
+            onChange={handleInputChange}
+          />
+          <Input
+            type="email"
+            name="email"
+            placeholder="Email"
+            autoComplete="on"
+            value={email}
+            onChange={handleInputChange}
+          />
+          <Input
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+            autoComplete="off"
+            value={password}
+            onChange={handleInputChange}
+          />
+          <Input
+            type="password"
+            name="passwordAgain"
+            placeholder="Repetir contraseña"
+            autoComplete="off"
+            value={passwordAgain}
+            onChange={handleInputChange}
+          />
+        <Button
+          name="Registrarse"
+          buttonStyle="w-full block bg-secondary hover:bg-white focus:bg-third focus:text-white font-semibold rounded-lg
+          px-4 py-2 mt-4 border border-dark"
+          onClick={handleRegister}
+        />
+        <hr className="my-6 border-gray-300 w-full" />
+
+        <GoogleLogin
+          clientId={process.env.REACT_APP_GOOGLE_KEY_ID}
+          buttonText="Registrarme con Google"
+          theme='dark' 
+          onSuccess={handleGoogleAuth}
+          onFailure={handleGoogleAuth}
+          cookiePolicy={'single_host_origin'}
+          className="w-full flex justify-center"
+        />
+        <Button
+          name="Ya tengo una cuenta"
+          buttonStyle="w-full block bg-secondary hover:bg-white focus:bg-third focus:text-white font-semibold rounded-lg
+          px-4 py-2 mt-4 border border-dark"
+          onClick={handleTologin}
+        />
+      </form>
+    </>
   );
 }

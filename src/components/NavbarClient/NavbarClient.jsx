@@ -39,19 +39,19 @@ export default function NavbarClient() {
       <NavLink to='/simulacro'>
         <Button
           name='Simulacro'
-          buttonStyle='px-6 py-2 bg-third rounded-full text-secondary h-fit hover:text-white hover:border-white text-xl font-bold'
+          buttonStyle='px-6 py-2 bg-third rounded-full text-secondary h-fit hover:text-white hover:border-white text-xl'
         />
       </NavLink>
 
       <NavLink to='/perfil'>
         <Button
           name='Perfil'
-          buttonStyle='px-6 py-2 bg-third rounded-full text-secondary h-fit hover:text-white hover:border-white border-2 border-secondary'
+          buttonStyle='px-6 py-2 bg-third rounded-full text-secondary h-fit hover:text-white hover:border-white text-xl'
         />
       </NavLink>
       <Button
         name='Cerrar sesión'
-        buttonStyle='px-6 py-2 bg-third rounded-full text-secondary h-fit hover:text-white hover:border-white text-xl font-bold'
+        buttonStyle='px-6 py-2 bg-third rounded-full text-secondary h-fit hover:text-white hover:border-white text-xl'
         onClick={handleLogout}
       />
     </nav>
