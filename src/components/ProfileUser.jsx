@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ProfileUser = () => {
   const [userFiltro, setuserFiltro] = useState({});
+  const [changePass, setChangePass] = useState(false);
   const email = useSelector((state) => state.auth.email);
   const navigate = useNavigate();
 
@@ -28,6 +29,7 @@ const ProfileUser = () => {
     const res = await apiClient(`/email/${email}`, 'GET');
     setuserFiltro(res.data);
   }
+
   useEffect(() => {
     handleUser();
   }, [email]);
@@ -59,14 +61,37 @@ const ProfileUser = () => {
               value={userFiltro.email}
               onChange={inputChange}
             />
-            <label>Password: </label>
+            {/* <label>Password: </label>
             <input
               type='password'
               className='appearance-none block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none'
               name='password'
               value={userFiltro.password}
               onChange={inputChange}
-            />
+            /> */}
+            <button className='inline-block w-full px-8 py-4 leading-none text-white bg-four hover:bg-third font-semibold rounded shadow mt-5' onClick={()=>{setChangePass(true)}}>Cambiar mi contraseña</button>
+            {changePass? 
+              <>
+                <label>Ingresa tu contraseña actual: </label>
+                <input
+                  type='password'
+                  className='appearance-none block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none'
+                  name='password'
+                  value={"password"}
+                  onChange={inputChange}
+                />
+                <label>Vuelve a ingresarla: </label>
+                <input
+                  type='password'
+                  className='appearance-none block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none'
+                  name='password'
+                  value={"password"}
+                  onChange={inputChange}
+                />
+              </>
+            :
+              <></>
+            }
             <button className='inline-block w-full px-8 py-4 leading-none text-white bg-four hover:bg-third font-semibold rounded shadow mt-5'>
               Actualizar
             </button>

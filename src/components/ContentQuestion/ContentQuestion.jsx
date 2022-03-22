@@ -7,7 +7,7 @@ export default function ContentQuestion({name,questionText}){
       <div className='bg-third px-3 py-2 text-slate-200 font-bold'>
         <h3>{name}</h3>
       </div>
-      <div className={'px-3 py-2 text-justify'}>
+      <div className={'px-3 py-2 text-justify'} id="marks">
         <Markdown>
         {`${String.raw`${questionText}`}`}
         </Markdown>
