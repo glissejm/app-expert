@@ -3,16 +3,24 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../store/actions/logout.action.js';
 
-import Logo from '../../assets/logo-expert.png';
-import Button from '../Button';
-import './Navbar.style.css';
+import Logo from "../../assets/logo-expert.png";
+import Button from "../Button";
+import "./Navbar.style.css";
+import { apiClient } from "../../store/axiosApi/index.js";
 
 export default function NavbarClient() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleLogout = () => {
-    dispatch(logoutUser());
-    navigate('/');
+  const handleLogout = async () => {
+    try{
+      //change cookie with the server help
+      const response = apiClient("/logout","GET");
+      console.log(response);
+      dispatch(logoutUser());
+      navigate("/");
+    }catch(e){
+      console.log(e);
+    }
   };
 
   return (

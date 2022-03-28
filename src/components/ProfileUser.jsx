@@ -9,11 +9,6 @@ const ProfileUser = () => {
   const email = useSelector((state) => state.auth.email);
   const navigate = useNavigate();
 
-  useEffect(async () => {
-    const res = await apiClient(`/email/${email}`, 'GET');
-    setuserFiltro(res.data);
-  }, [email]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const updateProfile = {
@@ -29,6 +24,13 @@ const ProfileUser = () => {
   const inputChange = (e) => {
     setuserFiltro({ ...userFiltro, [e.target.name]: e.target.value });
   };
+  const handleUser = async () => {
+    const res = await apiClient(`/email/${email}`, 'GET');
+    setuserFiltro(res.data);
+  }
+  useEffect(() => {
+    handleUser();
+  }, [email]);
 
   return (
     <section>
