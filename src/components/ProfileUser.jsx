@@ -1,65 +1,116 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { apiClient } from '../store/axiosApi/index';
 import { useSelector } from 'react-redux';
 import profile from '../assets/profile.svg';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from '../utils/hooks/useForm';
+//for errors
+import ErrorContext from "./Error/ErrorContext";
+import Error from './Error';
+import { loginUser } from '../store/actions/login.action';
 
 const ProfileUser = () => {
-  const [userFiltro, setuserFiltro] = useState({});
-  const [changePass, setChangePass] = useState(false);
-  const email = useSelector((state) => state.auth.email);
+  const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
+
+  const initialUser = {
+    name: auth.name,
+    email: auth.email,
+    password: "",
+    newPassword: "",
+    newPassword2: "",
+    googlePassword:"",
+  };
+  const [formValues, handleInputChange] = useForm(initialUser);
+  const {email, name, password, newPassword, newPassword2,googlePassword} = formValues;
+  const [buttonName, setButtonName] = useState("Cambiar mi contraseña");
+  const [changePass, setChangePass] = useState(false);
+  const [newPass, setNewPass] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [google, setGoogle] = useState("");
+
+  const handleChangeButton = () => {
+    setChangePass(!changePass);
+    !changePass ? setButtonName("No cambiar mi contraseña") : setButtonName("Cambiar mi contraseña");
+  }
+
+  const handleVerifyPassword = async () => {
+    //call api to verify the password 
+    try {
+      await apiClient("/password",{password},"POST");
+      setNewPass(true);
+    } catch (e) {
+      setErrorMessage(e.response.data.message);
+    }
+    //then change the state of show new password input
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const updateProfile = {
-      name: userFiltro.name,
-      email: userFiltro.email,
-      password: userFiltro.password,
-    };
+    try{
+      //verify if password and password again are equal
+      if(newPassword!==newPassword2){
+        setErrorMessage("Las contraseñas no son iguales");
+        return;
+      }
+      let passwordToSend = "";
+      if(google==="Google"){
+        passwordToSend = googlePassword;
+      }else{
+        passwordToSend = newPassword;
+      }
+      const { data } = await apiClient("/password",{name, email,password: passwordToSend},"PUT");
+      loginUser(data);
+      window.location.reload();
+      navigate("/dashboard");
+    }catch(error){
+      setErrorMessage(error.response.data.message);
+    }
+  }
 
-    await apiClient(`/user/${userFiltro._id}`, updateProfile, 'PUT');
-    navigate('/dashboard');
-  };
-
-  const inputChange = (e) => {
-    setuserFiltro({ ...userFiltro, [e.target.name]: e.target.value });
-  };
-  const handleUser = async () => {
-    const res = await apiClient(`/email/${email}`, 'GET');
-    setuserFiltro(res.data);
+  const getInfo = async () => {
+    try {
+      const response = await apiClient("/password","GET");
+      const {message} = response.data;
+      setGoogle(message);
+    } catch (e) {
+      console.log(e.response.data.message)
+    }
   }
 
   useEffect(() => {
-    handleUser();
-  }, [email]);
+    getInfo();
+  }, [])
 
   return (
     <section>
-      <div className='min-h-screen flex flex-col justify-center bg-four'>
+      <div className='min-h-screen flex flex-col justify-center bg-gray-200'>
         <div className='bg-white mx-auto max-w-md py-8 px-10 shadow rounded-lg'>
           <div>
-            <h1 className='text-4xl text-center mb-5'>{userFiltro.name}</h1>
+            <h1 className='text-4xl text-center mb-5'>{name}</h1>
           </div>
           <div className='flex justify-center'>
             <img src={profile} alt='' className='w-1/2' />
           </div>
           <form onSubmit={handleSubmit}>
+            <ErrorContext.Provider value={{errorMessage,setErrorMessage}}>
+              <Error/>
+            </ErrorContext.Provider>
             <label>Usuario: </label>
             <input
               type='text'
               className='appearance-none block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none'
               name='name'
-              value={userFiltro.name}
-              onChange={inputChange}
+              value={name}
+              onChange={handleInputChange}
             />
             <label>Email: </label>
             <input
               type='email'
               className='appearance-none block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none'
               name='email'
-              value={userFiltro.email}
-              onChange={inputChange}
+              value={email}
+              onChange={handleInputChange}
             />
             {/* <label>Password: </label>
             <input
@@ -69,30 +120,61 @@ const ProfileUser = () => {
               value={userFiltro.password}
               onChange={inputChange}
             /> */}
-            <button className='inline-block w-full px-8 py-4 leading-none text-white bg-four hover:bg-third font-semibold rounded shadow mt-5' onClick={()=>{setChangePass(true)}}>Cambiar mi contraseña</button>
+            <button type="button" className='inline-block w-full px-8 py-4 leading-none text-white bg-four hover:bg-third font-semibold rounded shadow mt-5' onClick={handleChangeButton}>{buttonName}</button>
             {changePass? 
               <>
-                <label>Ingresa tu contraseña actual: </label>
-                <input
-                  type='password'
-                  className='appearance-none block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none'
-                  name='password'
-                  value={"password"}
-                  onChange={inputChange}
-                />
-                <label>Vuelve a ingresarla: </label>
-                <input
-                  type='password'
-                  className='appearance-none block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none'
-                  name='password'
-                  value={"password"}
-                  onChange={inputChange}
-                />
+                {google === "Google"? 
+                  <>
+                    <label>Ingresa tu nueva contraseña: </label>
+                    <input
+                      type='password'
+                      className='appearance-none block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none'
+                      name='googlePassword'
+                      value={googlePassword}
+                      onChange={handleInputChange}
+                    />
+                  </>
+                :
+                <>
+                  <label>Ingresa tu contraseña actual: </label>
+                  <input
+                    type='password'
+                    className='appearance-none block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none'
+                    name='password'
+                    value={password}
+                    onChange={handleInputChange}
+                  />
+                  <button type='button' onClick={handleVerifyPassword} disabled={newPass===true} className='disabled:text-slate-500 disabled:bg-neutral-200 inline-block w-full px-8 py-4 leading-none text-white bg-four hover:bg-third font-semibold rounded shadow mt-5'>Verificar</button>
+                  {
+                    newPass ? 
+                    <>
+                      <label>Ingresa tu nueva contraseña: </label>
+                      <input
+                        type='password'
+                        className='appearance-none block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none'
+                        name='newPassword'
+                        value={newPassword}
+                        onChange={handleInputChange}
+                      />
+                      <label>Repetir nueva contraseña: </label>
+                      <input
+                        type='password'
+                        className='appearance-none block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none'
+                        name='newPassword2'
+                        value={newPassword2}
+                        onChange={handleInputChange}
+                      />
+                    </>
+                    :
+                    <></>
+                  }
+                </>
+                }
               </>
             :
               <></>
             }
-            <button className='inline-block w-full px-8 py-4 leading-none text-white bg-four hover:bg-third font-semibold rounded shadow mt-5'>
+            <button type='submit' className='inline-block w-full px-8 py-4 leading-none text-white bg-four hover:bg-third font-semibold rounded shadow mt-5'>
               Actualizar
             </button>
           </form>
