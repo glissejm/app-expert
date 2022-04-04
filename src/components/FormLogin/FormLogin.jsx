@@ -49,6 +49,10 @@ export default function FormLogin() {
     navigate("/register")
   }
 
+  const handleToResetPassword= () => {
+    navigate("/password-recover")
+  }
+
   return (
     <>
       <ErrorContext.Provider value={{errorMessage,setErrorMessage}}>
@@ -105,6 +109,13 @@ export default function FormLogin() {
           buttonStyle="w-full block bg-secondary hover:bg-white focus:bg-third focus:text-white font-semibold rounded-lg
       px-4 py-2 mt-4 border border-dark"
           onClick={handleToregister}
+        />
+
+        <Button
+          name="Recuperar contraseña"
+          buttonStyle="w-full block bg-secondary hover:bg-white focus:bg-third focus:text-white font-semibold rounded-lg
+      px-4 py-2 mt-4 border border-dark"
+          onClick={handleToResetPassword}
         />
       </form>
     </>

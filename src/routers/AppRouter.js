@@ -7,6 +7,8 @@ import Home from "../pages/Landing/Home";
 import Nosotros from "../pages/Landing/Nosotros";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import PasswordRecover from "../pages/PasswordRecover/PasswordRecover";
+import PasswordReset from "../pages/PasswordReset/PasswordReset";
 import { loginUser } from "../store/actions/login.action";
 import { logoutUser } from "../store/actions/logout.action";
 import { apiClient } from "../store/axiosApi";
@@ -56,6 +58,22 @@ export default function AppRouter() {
           element={
             <PublicRoute>
               <Register />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/password-recover"
+          element={
+            <PublicRoute>
+              <PasswordRecover />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/password-reset/:token"
+          element={
+            <PublicRoute>
+              <PasswordReset />
             </PublicRoute>
           }
         />
