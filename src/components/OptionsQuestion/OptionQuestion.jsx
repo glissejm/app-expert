@@ -23,7 +23,7 @@ export default function OptionQuestion({opciones}) {
   <div key={option._id} className="form-check flex items-center">
     <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-third bg-white checked:bg-green-400 checked:border-green-900 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value={option.name} checked={selected===option.name} onChange={(e) => {setSelected(e.target.value);handleOption(option.correct)}} name="selected" id={option._id} />
     <label className="form-check-label inline-block" htmlFor={option._id}>
-      <div className='flex justify-center items-center'>
+      <div className='flex justify-center items-center text-xl m-2'>
         <p className='mr-4'>{option.name}) </p>
         <Markdown>{`${String.raw`${option.value}`}`}</Markdown>
       </div>

@@ -1,8 +1,10 @@
 import React from 'react';
 import description from '../assets/description.jpg';
 import Button from './Button';
+import { useNavigate } from 'react-router-dom';
 
 export default function Description() {
+  const navigate = useNavigate();
   return (
     <>
       <article className="flex flex-col justify-center items-center py-12 xl:py-20 bg-stone-100">
@@ -23,6 +25,7 @@ export default function Description() {
         <Button
           name="Registrarse"
           buttonStyle="px-6 py-2 bg-secondary rounded-full text-third font-bold h-fit hover:bg-white  border-2 w-fit border-black mt-4"
+          onClick={()=>{navigate("/register")}}
         />
       </article>
     </>

@@ -3,8 +3,10 @@ import ideas from '../assets/ideas.jpg';
 import student from '../assets/student.jpg';
 import think from '../assets/think.jpg';
 import Button from './Button';
+import { useNavigate } from 'react-router-dom';
 
 export default function Presentation() {
+  const navigate = useNavigate();
   return (
     <>
       <article className="grid grid-cols-12 grid-rows-1 py-5 px-3 md:lg-0 md:lg-0">
@@ -22,6 +24,7 @@ export default function Presentation() {
           <Button
             name="Compra un plan"
             buttonStyle="px-6 py-2 bg-secondary rounded-full text-third font-bold h-fit hover:bg-white border-2 w-fit border-black mt-4"
+            onClick={()=>{navigate("/comprar")}}
           />
         </div>
         <figure className="flex justify-center col-span-12 md:col-span-5">
