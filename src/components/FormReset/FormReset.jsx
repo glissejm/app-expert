@@ -45,7 +45,6 @@ export default function FormReset() {
         const data = response.data;
         //store the user
         //with the action
-        dispatch(resetUser(data));
         //handle navigate to dashboard
         reset();
         navigate("/login");
