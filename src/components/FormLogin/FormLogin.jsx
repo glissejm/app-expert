@@ -88,7 +88,7 @@ export default function FormLogin() {
         </div>
         <Button
           name="Iniciar Sesión"
-          buttonStyle="w-full block bg-secondary hover:bg-white focus:bg-third focus:text-white font-semibold rounded-lg
+          buttonStyle="w-full block bg-third text-white hover:bg-white hover:text-third focus:bg-third focus:text-white font-semibold rounded-lg
       px-4 py-2 mt-4 border border-dark"
           onClick={handleLogin}
         />
@@ -106,14 +106,14 @@ export default function FormLogin() {
         />
         <Button
           name="No tengo una cuenta"
-          buttonStyle="w-full block bg-secondary hover:bg-white focus:bg-third focus:text-white font-semibold rounded-lg
+          buttonStyle="w-full block bg-third text-white hover:bg-white hover:text-third focus:bg-third focus:text-white font-semibold rounded-lg
       px-4 py-2 mt-4 border border-dark"
           onClick={handleToregister}
         />
 
         <Button
           name="Recuperar contraseña"
-          buttonStyle="w-full block bg-secondary hover:bg-white focus:bg-third focus:text-white font-semibold rounded-lg
+          buttonStyle="w-full block bg-third text-white hover:bg-white hover:text-third focus:bg-third focus:text-white font-semibold rounded-lg
       px-4 py-2 mt-4 border border-dark"
           onClick={handleToResetPassword}
         />

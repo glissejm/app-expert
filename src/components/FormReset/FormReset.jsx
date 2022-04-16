@@ -80,7 +80,7 @@ export default function FormReset() {
             />
           <Button
             name="Cambiar contraseña"
-            buttonStyle="w-full block bg-secondary hover:bg-white focus:bg-third focus:text-white font-semibold rounded-lg
+            buttonStyle="w-full block text-white hover:text-third bg-third hover:bg-white font-semibold rounded-lg
             px-4 py-2 mt-4 border border-dark"
             onClick={handleReset}
           />

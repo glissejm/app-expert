@@ -47,8 +47,9 @@ export default function QuestionList() {
             <div className='text-white my-4'>No hay preguntas</div>
             :
             <>
+              <div className='pb-6'></div>
               {listQuestion}
-              <button className="question bg-third border-4 rounded-full text-secondary hover:text-third hover:bg-white text-center py-2 shadow-lg">Cargar más preguntas</button>
+              <button className="question bg-third border-4 rounded-full text-white hover:text-third hover:bg-white text-center py-2 shadow-lg">Cargar más preguntas</button>
             </>
           }
           

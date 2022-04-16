@@ -93,7 +93,7 @@ export default function FormRegister() {
           />
         <Button
           name="Registrarse"
-          buttonStyle="w-full block bg-secondary hover:bg-white focus:bg-third focus:text-white font-semibold rounded-lg
+          buttonStyle="w-full block bg-third text-white hover:bg-white hover:text-third focus:bg-third focus:text-white font-semibold rounded-lg
           px-4 py-2 mt-4 border border-dark"
           onClick={handleRegister}
         />
@@ -110,7 +110,7 @@ export default function FormRegister() {
         />
         <Button
           name="Ya tengo una cuenta"
-          buttonStyle="w-full block bg-secondary hover:bg-white focus:bg-third focus:text-white font-semibold rounded-lg
+          buttonStyle="w-full block bg-third text-white hover:bg-white hover:text-third focus:bg-third focus:text-white font-semibold rounded-lg
           px-4 py-2 mt-4 border border-dark"
           onClick={handleTologin}
         />

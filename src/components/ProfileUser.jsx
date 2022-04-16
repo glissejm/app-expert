@@ -32,6 +32,9 @@ const ProfileUser = () => {
   const handleChangeButton = () => {
     setChangePass(!changePass);
     !changePass ? setButtonName("No cambiar mi contraseña") : setButtonName("Cambiar mi contraseña");
+    if(newPass===true){
+      setNewPass(false);
+    }
   }
 
   const handleVerifyPassword = async () => {
@@ -120,7 +123,7 @@ const ProfileUser = () => {
               value={userFiltro.password}
               onChange={inputChange}
             /> */}
-            <button type="button" className='inline-block w-full px-8 py-4 leading-none text-white bg-four hover:bg-third font-semibold rounded shadow mt-5' onClick={handleChangeButton}>{buttonName}</button>
+            <button type="button" className='inline-block w-full px-8 py-4 leading-none text-white hover:text-third bg-third hover:bg-white font-semibold border border-third rounded shadow mt-5' onClick={handleChangeButton}>{buttonName}</button>
             {changePass? 
               <>
                 {google === "Google"? 
@@ -144,7 +147,7 @@ const ProfileUser = () => {
                     value={password}
                     onChange={handleInputChange}
                   />
-                  <button type='button' onClick={handleVerifyPassword} disabled={newPass===true} className='disabled:text-slate-500 disabled:bg-neutral-200 inline-block w-full px-8 py-4 leading-none text-white bg-four hover:bg-third font-semibold rounded shadow mt-5'>Verificar</button>
+                  <button type='button' onClick={handleVerifyPassword} disabled={newPass===true} className='disabled:text-slate-500 disabled:border-0 disabled:bg-neutral-200 hover:text-third hover:bg-white inline-block w-full px-8 py-4 leading-none text-white bg-third border border-third font-semibold rounded shadow mt-5'>Verificar</button>
                   {
                     newPass ? 
                     <>
@@ -174,7 +177,7 @@ const ProfileUser = () => {
             :
               <></>
             }
-            <button type='submit' className='inline-block w-full px-8 py-4 leading-none text-white bg-four hover:bg-third font-semibold rounded shadow mt-5'>
+            <button type='submit' className='inline-block w-full px-8 py-4 leading-none text-white bg-third hover:text-third hover:bg-white border border-third font-semibold rounded shadow mt-5'>
               Actualizar
             </button>
           </form>
