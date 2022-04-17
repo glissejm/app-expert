@@ -8,6 +8,7 @@ import { useForm } from '../utils/hooks/useForm';
 import ErrorContext from "./Error/ErrorContext";
 import Error from './Error';
 import { loginUser } from '../store/actions/login.action';
+import axios from 'axios';
 
 const ProfileUser = () => {
   const auth = useSelector((state) => state.auth);
@@ -28,6 +29,41 @@ const ProfileUser = () => {
   const [newPass, setNewPass] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [google, setGoogle] = useState("");
+  const [file, setFile] = useState(null);
+  const [image, setImage] = useState(null);
+
+  const handleImageChange = (event) => {
+    console.log("here",event.target.files[0]);
+
+    setFile(event.target.files[0]);
+
+  }
+
+  async function handleImageSubmit (e) {
+    e.preventDefault();
+    const formData = new FormData()
+    formData.append('photo', file)
+    formData.append('email', email)
+
+    console.log("handleSubmit response",[...formData])
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    }
+
+    const url = 'http://localhost:5000/imageUpload';
+    axios
+      .put(url, formData, config)
+      .then(res => {
+        alert('Image Uploaded Successfully')
+      })
+      .catch(err => {
+        console.log(err)
+      })
+
+
+  }
 
   const handleChangeButton = () => {
     setChangePass(!changePass);
@@ -74,8 +110,13 @@ const ProfileUser = () => {
   const getInfo = async () => {
     try {
       const response = await apiClient("/password","GET");
-      const {message} = response.data;
+      const {message,imgProfile} = response.data;
       setGoogle(message);
+      if (imgProfile === "Not found") {
+        setImage(profile);
+      }else {
+        setImage(imgProfile);
+      }
     } catch (e) {
       console.log(e.response.data.message)
     }
@@ -92,8 +133,8 @@ const ProfileUser = () => {
           <div>
             <h1 className='text-4xl text-center mb-5'>{name}</h1>
           </div>
-          <div className='flex justify-center'>
-            <img src={profile} alt='' className='w-1/2' />
+          <div className='flex justify-center mb-5'>
+            <img src={image} alt='' className='w-1/2' />
           </div>
           <form onSubmit={handleSubmit}>
             <ErrorContext.Provider value={{errorMessage,setErrorMessage}}>
@@ -180,6 +221,18 @@ const ProfileUser = () => {
             <button type='submit' className='inline-block w-full px-8 py-4 leading-none text-white bg-third hover:text-third hover:bg-white border border-third font-semibold rounded shadow mt-5'>
               Actualizar
             </button>
+          </form>
+          <form onSubmit={handleImageSubmit} className="mt-8  rounded shadow border-4 border-third p-3">
+            <label htmlFor='file'>Actualizar foto de perfil:</label>
+            <input
+              type="file"
+              accept="image/*"
+              name="photo"
+              id="file"
+              className='mt-3'
+              onChange={handleImageChange}
+            />
+            <button type="submit" value="Enviar foto" className="text-white bg-third hover:text-third hover:bg-white border border-third font-semibold rounded shadow mt-5 px-4">Enviar</button>
           </form>
         </div>
       </div>
