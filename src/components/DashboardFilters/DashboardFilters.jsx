@@ -41,7 +41,7 @@ export default function DashboardFilters() {
       className="flex flex-col w-1/4 items-center justify-start"
     >
       <div className="flex flex-col text-white items-center my-6 mx-24 py-6 px-6 bg-third rounded-2xl">
-        <div className="text-white text-xl mb-2 text-center">Filtrar por curso</div>
+        <div className="text-white text-xl mb-2 text-center font-bold">Filtrar por curso</div>
         <div>
           <div className="form-check">
             <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-secondary bg-third checked:bg-orange checked:border-orange focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value="Geometría" name="filterCourse" checked={course==="Geometría"} id="scf1" onChange={handleCourseChange}/>
@@ -88,7 +88,7 @@ export default function DashboardFilters() {
         </div>
       </div>
       <div className="flex flex-col text-white items-center mx-24 py-6 px-6 bg-third rounded-2xl">
-        <div className="text-white text-xl mb-3 text-center">Filtrar por dificultad</div>
+        <div className="text-white text-xl mb-3 text-center font-bold">Filtrar por dificultad</div>
         <div>
           <div className="form-check">
             <input className="form-check-input appearance-none rounded-full h-4 w-4 border border-secondary bg-third checked:bg-orange checked:border-orange focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" value="Fácil" name="filterDifficult" checked={difficult==="Fácil"} onChange={handleDifficultChange} id="flexRadioDefault1"/>

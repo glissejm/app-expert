@@ -24,7 +24,7 @@ export default function Description() {
         </p>
         <Button
           name="Registrarse"
-          buttonStyle="px-6 py-2 bg-secondary rounded-full text-third font-bold h-fit hover:bg-white  border-2 w-fit border-black mt-4"
+          buttonStyle="px-6 py-2 bg-third rounded-full text-white font-bold h-fit hover:bg-white hover:text-third  border-2 w-fit border-black mt-4"
           onClick={()=>{navigate("/register")}}
         />
       </article>

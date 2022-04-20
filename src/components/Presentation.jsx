@@ -23,7 +23,7 @@ export default function Presentation() {
           </p>
           <Button
             name="Compra un plan"
-            buttonStyle="px-6 py-2 bg-secondary rounded-full text-third font-bold h-fit hover:bg-white border-2 w-fit border-black mt-4"
+            buttonStyle="px-6 py-2 bg-third rounded-full text-white font-bold h-fit hover:text-third hover:bg-white border-2 w-fit border-third mt-4"
             onClick={()=>{navigate("/comprar")}}
           />
         </div>
