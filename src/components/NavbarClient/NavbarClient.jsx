@@ -32,16 +32,16 @@ export default function NavbarClient() {
   }, [])
   return (
     <nav
-      className='flex bg-third justify-between px-8 drop-shadow-md'
+      className='flex bg-third justify-between px-16 drop-shadow-md'
       id='navbar'
     >
-      <NavLink className='text-secondary pt-2' to='/dashboard'>
+      <NavLink className='text-secondary pt-2 px-16' to='/dashboard'>
         <picture>
           <img src={Logo} alt='logo-expert' style={{ width: '130px' }} />
         </picture>  
       </NavLink>
       <div className="dropdown inline-block relative">
-        <button className="px-6 py-2 bg-third rounded-full text-secondary h-fit hover:text-white hover:border-white  flex justify-around items-center">
+        <button className="px-16 py-2 bg-third rounded-full text-secondary h-fit hover:text-white hover:border-white  flex justify-around items-center">
           <img src={imgRute} alt="" className='rounded-full mx-2' style={{width: "30px"}}/>
           <span className="mr-1 text-xl">{nameUser}</span>
           <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /> </svg>
