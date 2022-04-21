@@ -20,7 +20,8 @@ const initialStateQuestion = {
   difficult:"",
   questionText:"",
   solutionText:"",
-  opciones:[]
+  opciones:[],
+  video:"",
 }
 
 const Exercise = () => {
@@ -53,7 +54,7 @@ const Exercise = () => {
         <Button onClick={handleToDashboard} name="Terminar pregunta" buttonStyle="border border-third rounded-full py-1 px-4 bg-third text-white hover:bg-white hover:text-third hover:border-third hover:border" />
       </div>
 
-      <div className="m-0 p-0 h-screen">
+      <div className="m-0 p-0 h-screen z-0">
         <ReflexContainer className="max-h-full overflow-auto" orientation="vertical">
           <ReflexElement>
             <ReflexContainer orientation="vertical">
@@ -72,11 +73,11 @@ const Exercise = () => {
               <ReflexElement {...resizeProps}>
               <ReflexContainer orientation="horizontal" className={`drop-shadow-md bg-white col-span-6 resize`}>
                   <ReflexElement {...resizeProps}>
-                      <OptionQuestion opciones={data.opciones}/>
+                      <OptionQuestion opciones={data.opciones} id={id}/>
                   </ReflexElement>
                   <ReflexSplitter propagate={true} {...resizeProps} />
                   <ReflexElement {...resizeProps}>
-                      <VideoSolution/>
+                      <VideoSolution videoUrl={data.video}/>
                   </ReflexElement>
                 </ReflexContainer>
               </ReflexElement>

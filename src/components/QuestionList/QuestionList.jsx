@@ -7,6 +7,7 @@ import './QuestionList.style.css';
 
 export default function QuestionList() {
   const [listquestion, setListquestion] = useState([]);
+
   const query = useSelector(state=>state.query.value); 
   const getQuestions = async (query= "") => {
     try{
@@ -23,7 +24,9 @@ export default function QuestionList() {
   }, [query])
 
 
-  const listQuestion = listquestion.map((question) => (
+
+  const listQuestion = listquestion.map((question) => {
+    return(
       <QuestionBox
         className="question"
         id={question._id}
@@ -33,7 +36,8 @@ export default function QuestionList() {
         topic={question.topic}
         difficult={question.difficult}
       />
-  ));
+  )
+  });
   return (
     <section className="w-3/4 flex flex-col items-center">
       
@@ -49,7 +53,7 @@ export default function QuestionList() {
             <>
               <div className='pb-6'></div>
               {listQuestion}
-              <button className="question bg-third border-4 rounded-full text-white hover:text-third hover:bg-white text-center py-2 shadow-lg">Cargar más preguntas</button>
+              {/* <button className="question bg-third border-4 rounded-full text-white hover:text-third hover:bg-white text-center py-2 shadow-lg">Cargar más preguntas</button> */}
             </>
           }
           

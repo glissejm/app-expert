@@ -1,8 +1,7 @@
-import React from 'react'
-import Markdown from '../../utils/Markdown'
+import React,{useState,useEffect} from 'react'
 import YouTube from 'react-youtube';
 
-export default function VideoSolution(){
+export default function VideoSolution({videoUrl}){
   const opts = {
     height: '300',
     width: '640',
@@ -16,16 +15,13 @@ export default function VideoSolution(){
     event.target.pauseVideo();
   }
 
-  const idURL = 'Ll7xfe3HoZE'
-
   return (
     <>
       <div className='bg-third px-3 py-2 text-slate-200 font-bold'>
         <h3>Video Solución</h3>
       </div>
-      <div className={'px-3 py-2 text-justify'}>
-        <YouTube videoId={idURL} opts={opts} onReady={_onReady} />
-        
+      <div className={'px-3 py-4 text-justify flex flex-row justify-center bg-third'}>
+        <YouTube videoId={videoUrl} opts={opts} onReady={_onReady} /> 
       </div>
     </>
   ) 
