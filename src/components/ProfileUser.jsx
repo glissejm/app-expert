@@ -8,6 +8,7 @@ import { useForm } from '../utils/hooks/useForm';
 import ErrorContext from "./Error/ErrorContext";
 import Error from './Error';
 import { loginUser } from '../store/actions/login.action';
+import ShowProgress from './showProgress/ShowProgress';
 
 const ProfileUser = () => {
   const auth = useSelector((state) => state.auth);
@@ -182,6 +183,7 @@ const ProfileUser = () => {
             </button>
           </form>
         </div>
+        <ShowProgress/>
       </div>
     </section>
   );

@@ -72,7 +72,7 @@ const Exercise = () => {
               <ReflexElement {...resizeProps}>
               <ReflexContainer orientation="horizontal" className={`drop-shadow-md bg-white col-span-6 resize`}>
                   <ReflexElement {...resizeProps}>
-                      <OptionQuestion opciones={data.opciones}/>
+                      <OptionQuestion opciones={data.opciones} id={id}/>
                   </ReflexElement>
                   <ReflexSplitter propagate={true} {...resizeProps} />
                   <ReflexElement {...resizeProps}>
