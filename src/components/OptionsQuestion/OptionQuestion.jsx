@@ -1,13 +1,20 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect,useRef} from 'react'
+import { apiClient } from '../../store/axiosApi';
 import Markdown from '../../utils/Markdown'
 
-export default function OptionQuestion({opciones}) {
+export default function OptionQuestion({opciones,id}) {
   const [selected, setSelected] = useState("");
   const [answer, setAnswer] = useState(false);
   const initialValidate = {show: false, value: "Validar mi respuesta con el juez"};
   const [validate, setValidate] = useState(initialValidate); 
+  const add = useRef(false);
   const handleOption = (correct) => {
-    correct ? setAnswer(true): setAnswer(false);
+    setAnswer(correct);
+    if(correct){
+      add.current = true;
+    }else{
+      add.current = false;
+    }
   }
 
   const resetSelected = () =>{
@@ -17,6 +24,21 @@ export default function OptionQuestion({opciones}) {
   const handleJudge = () => {
     validate.show===false? setValidate({show:true, value:"Ocultar el juez"}): setValidate(initialValidate);
   }
+
+  //add question id to the progress const reset
+  const handleAddProgress= async () => {
+    //call backed passing the id to backend
+    await apiClient("/addquestion",{idquestion:id},"POST");
+  }
+  //we need to pass the if select it's true or not
+  useEffect(() => {
+    return () => {
+      //this functions should be excute when the component dies
+      if(add.current){
+        handleAddProgress();
+      }
+    }
+  }, [])
   //listo of options to rendered
   const optionsObj = opciones.map((option)=>{
   return(

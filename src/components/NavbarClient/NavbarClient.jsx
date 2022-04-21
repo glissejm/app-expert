@@ -48,6 +48,11 @@ export default function NavbarClient() {
             </NavLink>
           </li>
           <li>
+            <NavLink to='/progress' className="py-2 px-4 text-white border-2 border-third font-bold bg-third hover:bg-white hover:text-third block whitespace-no-wrap">
+              Progreso
+            </NavLink>
+          </li>
+          <li>
             <button onClick={handleLogout} className="py-2 px-4 text-white border-2 border-third font-bold bg-third hover:bg-white hover:text-third block whitespace-no-wrap rounded-b-lg">
               Cerrar sesión
             </button>
