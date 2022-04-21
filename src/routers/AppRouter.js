@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Error404 from "../pages/Error/Error404";
-import Comprar from "../pages/Landing/Comprar";
+import Plan from "../pages/Pay/Plan";
+import Cart from "../pages/Pay/Cart";
 import Home from "../pages/Landing/Home";
 import Nosotros from "../pages/Landing/Nosotros";
 import Login from "../pages/Login/Login";
@@ -77,7 +78,8 @@ export default function AppRouter() {
             </PublicRoute>
           }
         />
-        <Route path="/comprar" element={<Comprar />} />
+        <Route path="/plan" element={<Plan />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/nosotros" element={<Nosotros />} />
         {/* In this route define the component for users registered */}
         <Route

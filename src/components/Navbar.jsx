@@ -16,7 +16,7 @@ export default function Navbar() {
           <li>
             <NavLink
               className="text-secondary  text-xl hover:text-white"
-              to="/comprar"
+              to="/plan"
             >
               Comprar
             </NavLink>
