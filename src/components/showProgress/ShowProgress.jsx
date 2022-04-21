@@ -36,7 +36,7 @@ export default function ShowProgress() {
         <div>Tema</div>
         <div>Dificultad</div>
       </section>
-      <hr className="mb-2"/>
+      <hr className="mb-4"/>
       {arrayProgress.length === 0?
         <div>No hay progreso</div>
         :
