@@ -31,6 +31,7 @@ const ProfileUser = () => {
   const [google, setGoogle] = useState("");
   const [file, setFile] = useState(null);
   const [image, setImage] = useState(null);
+  const [showChangeImage, setShowChangeImage] = useState(false);
 
   const handleImageChange = (event) => {
     console.log("here",event.target.files[0]);
@@ -136,6 +137,23 @@ const ProfileUser = () => {
           <div className='flex justify-center mb-5'>
             <img src={image} alt='' className='w-1/2' />
           </div>
+          <button type='button' onClick={()=>{setShowChangeImage(true)}}  className='disabled:text-slate-500 disabled:border-0 disabled:bg-neutral-200 hover:text-third hover:bg-white inline-block w-full px-8 py-4 leading-none text-white bg-third border border-third font-semibold rounded shadow mt-5'>Cambiar imagen</button>
+          {showChangeImage === true?
+            <form onSubmit={handleImageSubmit} className="mt-8  rounded shadow border-4 border-third p-3 mb-4">
+              <label htmlFor='file'>Actualizar foto de perfil:</label>
+              <input
+                type="file"
+                accept="image/*"
+                name="photo"
+                id="file"
+                className='mt-3'
+                onChange={handleImageChange}
+              />
+              <button type="submit" value="Enviar foto" className="text-white bg-third hover:text-third hover:bg-white border border-third font-semibold rounded shadow mt-5 px-4">Enviar</button>
+            </form>
+            :
+            <></>
+          }
           <form onSubmit={handleSubmit}>
             <ErrorContext.Provider value={{errorMessage,setErrorMessage}}>
               <Error/>
@@ -221,18 +239,6 @@ const ProfileUser = () => {
             <button type='submit' className='inline-block w-full px-8 py-4 leading-none text-white bg-third hover:text-third hover:bg-white border border-third font-semibold rounded shadow mt-5'>
               Actualizar
             </button>
-          </form>
-          <form onSubmit={handleImageSubmit} className="mt-8  rounded shadow border-4 border-third p-3">
-            <label htmlFor='file'>Actualizar foto de perfil:</label>
-            <input
-              type="file"
-              accept="image/*"
-              name="photo"
-              id="file"
-              className='mt-3'
-              onChange={handleImageChange}
-            />
-            <button type="submit" value="Enviar foto" className="text-white bg-third hover:text-third hover:bg-white border border-third font-semibold rounded shadow mt-5 px-4">Enviar</button>
           </form>
         </div>
       </div>
